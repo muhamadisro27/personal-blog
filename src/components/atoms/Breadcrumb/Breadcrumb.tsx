@@ -5,6 +5,7 @@ import {
 import { IBreadcrumbLink } from "@/types"
 import BreadcrumbLink from "./BreadcrumbLink"
 import BreadcrumbPage from "./BreadcrumbPage"
+import { Fragment } from "react"
 
 interface Props {
   breadcrumbLinks: IBreadcrumbLink[]
@@ -15,17 +16,13 @@ const Breadcrumb = ({ breadcrumbLinks }: Props) => {
     <BreadcrumbShadCN>
       <BreadcrumbList>
         {breadcrumbLinks.map((breadCrumb, index) => (
-          <>
+          <Fragment key={index}>
             {index === breadcrumbLinks.length - 1 ? (
               <BreadcrumbPage title={breadCrumb.title} />
             ) : (
-              <BreadcrumbLink
-                title={breadCrumb.title}
-                key={index}
-                link={breadCrumb.url}
-              />
+              <BreadcrumbLink title={breadCrumb.title} link={breadCrumb.url} />
             )}
-          </>
+          </Fragment>
         ))}
       </BreadcrumbList>
     </BreadcrumbShadCN>

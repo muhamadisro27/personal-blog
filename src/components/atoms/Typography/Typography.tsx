@@ -15,7 +15,7 @@ const Typography = <T extends ElementType = "p">({
 
   return (
     <Component
-      className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}
+      className={cn("", className)}
       {...props}
     >
       {children}

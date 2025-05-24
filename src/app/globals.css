@@ -82,4 +82,20 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .animate-type {
+    border-right: 5px solid currentColor;
+    padding-right: 4px;
+    animation: blink-caret 0.8s step-end infinite;
+  }
+
+  @keyframes blink-caret {
+    from,
+    to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: currentColor;
+    }
+  }
 }
