@@ -42,7 +42,7 @@ const Typewriter = () => {
           }
         }
       },
-      isDeleting ? 55 : 80
+      isDeleting ? 45 : 65
     )
 
     return () => clearTimeout(timeout)
