@@ -1,11 +1,11 @@
-import React, { ComponentProps, ReactNode } from "react"
+import React, { ComponentProps } from "react"
 import { Label as LabelShadCN } from "@/components/ui/label"
 
-type Props = {
-  children: ReactNode
-} & ComponentProps<typeof LabelShadCN>
-
-const Label = ({ children, htmlFor, ...props }: Props) => {
+const Label = ({
+  children,
+  htmlFor,
+  ...props
+}: ComponentProps<typeof LabelShadCN>) => {
   return (
     <LabelShadCN htmlFor={htmlFor} {...props}>
       {children}

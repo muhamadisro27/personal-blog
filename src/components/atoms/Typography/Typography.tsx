@@ -1,10 +1,8 @@
-import { ComponentPropsWithoutRef, ElementType, ReactNode } from "react"
+import { ComponentPropsWithoutRef, ElementType } from "react"
 import { cn } from "@/lib/utils"
 
 type TypographyProps<T extends ElementType> = {
   as?: T
-  children: ReactNode
-  className?: string
 } & ComponentPropsWithoutRef<T>
 
 const Typography = <T extends ElementType = "p">({
