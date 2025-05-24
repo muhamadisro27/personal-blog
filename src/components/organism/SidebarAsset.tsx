@@ -1,40 +1,34 @@
 "use client"
-import React from "react"
 import {
-  SidebarGroup,
-  SidebarGroupLabel,
   SidebarGroupContent,
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarMenu,
+  SidebarGroup,
+  SidebarGroupLabel,
 } from "@/components/ui/sidebar"
-import { Home, Leaf, Send } from "lucide-react"
-import { usePathname } from "next/navigation"
+import { ChartLine, Home } from "lucide-react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
-const SidebarPersonal = () => {
+const SidebarAsset = () => {
   const MENU_ITEMS = [
     {
-      name: "About Us",
-      url: "/about-us",
-      icon: Leaf,
+      name: "Reksadana",
+      url: "/reksadana",
+      icon: ChartLine,
     },
-    {
-      name: "Contact",
-      url: "/contact",
-      icon: Send,
-    },
-  ] as const
+  ]
 
-  const currentURL = usePathname()
+  const CURRENT_URL = usePathname()
 
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Personal</SidebarGroupLabel>
+      <SidebarGroupLabel>Asset</SidebarGroupLabel>
       <SidebarGroupContent>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild isActive={"/" === currentURL}>
+            <SidebarMenuButton asChild isActive={"/" === CURRENT_URL}>
               <Link href={"/"} className="flex items-center gap-2">
                 <Home className="w-4 h-4" />
                 <span>Home</span>
@@ -44,7 +38,7 @@ const SidebarPersonal = () => {
           {MENU_ITEMS.map((item) => {
             return (
               <SidebarMenuItem key={item.name}>
-                <SidebarMenuButton asChild isActive={item.url === currentURL}>
+                <SidebarMenuButton asChild isActive={item.url === CURRENT_URL}>
                   <Link href={item.url} className="flex items-center gap-2">
                     <item.icon className="w-4 h-4" />
                     <span>{item.name}</span>
@@ -59,4 +53,4 @@ const SidebarPersonal = () => {
   )
 }
 
-export default SidebarPersonal
+export default SidebarAsset

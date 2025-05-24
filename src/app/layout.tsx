@@ -6,6 +6,7 @@ import { Sidebar } from "@/components/molecules/AppSidebar"
 import Header from "@/components/organism/Header"
 import { Container } from "@/components/atoms/Container"
 import { Geist } from "next/font/google"
+import AppInitializer from "@/components/molecules/AppInitializer"
 
 export const metadata: Metadata = {
   title: "Muhamad Isro Sabanur | Personal Website",
@@ -31,11 +32,13 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <SidebarProvider>
-            <Sidebar />
-            <main className="w-full min-h-svh">
-              <Header />
-              <Container>{children}</Container>
-            </main>
+            <AppInitializer>
+              <Sidebar />
+              <main className="w-full min-h-svh">
+                <Header />
+                <Container>{children}</Container>
+              </main>
+            </AppInitializer>
           </SidebarProvider>
         </ThemeProvider>
       </body>

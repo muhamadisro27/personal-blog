@@ -1,36 +1,30 @@
 "use client"
-import React from "react"
 import {
-  SidebarGroup,
-  SidebarGroupLabel,
   SidebarGroupContent,
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarMenu,
+  SidebarGroup,
+  SidebarGroupLabel,
 } from "@/components/ui/sidebar"
-import { Home, Leaf, Send } from "lucide-react"
-import { usePathname } from "next/navigation"
+import { PersonStanding, Home } from "lucide-react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
-const SidebarPersonal = () => {
+const SidebarHobbies = () => {
   const MENU_ITEMS = [
     {
-      name: "About Us",
-      url: "/about-us",
-      icon: Leaf,
+      name: "Run Activities",
+      url: "/run-activities",
+      icon: PersonStanding,
     },
-    {
-      name: "Contact",
-      url: "/contact",
-      icon: Send,
-    },
-  ] as const
+  ]
 
   const currentURL = usePathname()
 
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Personal</SidebarGroupLabel>
+      <SidebarGroupLabel>Hobbies</SidebarGroupLabel>
       <SidebarGroupContent>
         <SidebarMenu>
           <SidebarMenuItem>
@@ -59,4 +53,4 @@ const SidebarPersonal = () => {
   )
 }
 
-export default SidebarPersonal
+export default SidebarHobbies
