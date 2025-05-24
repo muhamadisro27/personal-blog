@@ -38,7 +38,7 @@ const Typewriter = () => {
           } else {
             setTimeout(() => {
               setIsDeleting(true)
-            }, 2000)
+            }, 3000)
           }
         }
       },

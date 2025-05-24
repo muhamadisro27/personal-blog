@@ -1,2 +1,2 @@
 export const prefix = "Hi, I'm "
-export const suffixes = ["Frontend Engineer", "Muhamad Isro Sabanur"]
+export const suffixes = ["Muhamad Isro Sabanur", "Frontend Engineer"]

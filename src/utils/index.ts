@@ -5,3 +5,12 @@ export function getCommonPrefixLength(a: string, b: string): number {
   }
   return i
 }
+
+export const setClassActive = <T extends string>(
+  selected: T,
+  value: T,
+  className: string
+) => (selected === value ? className : "")
+
+export const setDefaultValue = (currentValue: string, defaultValue: string) =>
+  currentValue || defaultValue

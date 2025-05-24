@@ -1,4 +1,4 @@
-import { Breadcrumb } from "@/components/molecules/Breadcrumb"
+import { Breadcrumb } from "@/components/atoms/Breadcrumb"
 import { IBreadcrumbLink } from "@/types"
 import Box from "@/components/atoms/Box/Box"
 import { Typewriter } from "../molecules/Typewriter"
