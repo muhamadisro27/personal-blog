@@ -1,4 +1,3 @@
-import React from "react"
 import {
   Sidebar as SidebarShadCN,
   SidebarContent,
@@ -6,14 +5,15 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import SidebarMenus from "@/components/organism/SidebarMenus"
+import SidebarPersonal from "@/components/organism/SidebarPersonal"
 
 const Sidebar = () => {
   return (
     <SidebarShadCN>
       <SidebarHeader />
       <SidebarContent>
-        <SidebarMenus />
+        <SidebarPersonal />
+        {/* <SidebarRun /> */}
       </SidebarContent>
       <SidebarFooter />
       <SidebarRail />

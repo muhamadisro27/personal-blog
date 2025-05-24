@@ -7,35 +7,30 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarMenu,
+  SidebarGroupAction,
 } from "@/components/ui/sidebar"
-import { Box, Home, PlayCircle } from "lucide-react"
+import { PlayIcon, Plus } from "lucide-react"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 
-const SidebarMenus = () => {
+const SidebarRun = () => {
   const menuItems = [
     {
-      name: "Home",
-      url: "/",
-      icon: Home,
-    },
-    {
-      name: "Run Progress",
-      url: "/run-progress",
-      icon: PlayCircle,
-    },
-    {
-      name: "Asset",
-      url: "/asset",
-      icon: Box,
+      name: "Run",
+      url: "/run",
+      icon: PlayIcon,
+      hasActionButton: false,
     },
   ]
 
   const currentURL = usePathname()
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Menu</SidebarGroupLabel>
-      <SidebarGroupContent>
+      <SidebarGroupLabel asChild>Run</SidebarGroupLabel>
+      {/* <SidebarGroupAction title="Add Activities">
+        <Plus /> <span className="sr-only">Add Activities</span>
+      </SidebarGroupAction> */}
+      {/* <SidebarGroupContent>
         <SidebarMenu>
           {menuItems.map((item) => {
             return (
@@ -50,9 +45,9 @@ const SidebarMenus = () => {
             )
           })}
         </SidebarMenu>
-      </SidebarGroupContent>
+      </SidebarGroupContent> */}
     </SidebarGroup>
   )
 }
 
-export default SidebarMenus
+export default SidebarRun
