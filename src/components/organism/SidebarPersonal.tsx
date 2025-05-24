@@ -8,7 +8,7 @@ import {
   SidebarMenuButton,
   SidebarMenu,
 } from "@/components/ui/sidebar"
-import { Home, PlayIcon } from "lucide-react"
+import { Home, PersonStanding, Send } from "lucide-react"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 
@@ -22,7 +22,12 @@ const SidebarPersonal = () => {
     {
       name: "Run",
       url: "/run-activities",
-      icon: PlayIcon,
+      icon: PersonStanding,
+    },
+    {
+      name: "Contact",
+      url: "/contact",
+      icon: Send,
     },
   ]
 
