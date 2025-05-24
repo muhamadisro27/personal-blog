@@ -1,9 +1,9 @@
 import { ComponentProps, ReactNode } from "react"
 import { Button as ShadCNBtn } from "@/components/ui/button"
 
-interface Props extends ComponentProps<typeof ShadCNBtn> {
+type Props = {
   children: ReactNode
-}
+} & ComponentProps<typeof ShadCNBtn>
 
 const Button = ({ children, ...props }: Props) => {
   return <ShadCNBtn {...props}>{children}</ShadCNBtn>

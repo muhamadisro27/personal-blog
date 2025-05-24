@@ -1,6 +1,9 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/atoms/Avatar"
+import { Typography } from "@/components/atoms/Typography"
 
 export default function Page() {
-  return <>
-  </>
+  return (
+    <>
+      <Typography as="span">asdasd</Typography>
+    </>
+  )
 }

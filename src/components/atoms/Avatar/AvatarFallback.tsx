@@ -1,12 +1,12 @@
-import React, { ComponentProps } from "react"
+import React, { ComponentProps, ReactNode } from "react"
 import { AvatarFallback as AvatarFallbackShadCN } from "@/components/ui/avatar"
 
-interface Props extends ComponentProps<typeof AvatarFallbackShadCN> {
-  text: string
-}
+type Props = {
+  children: ReactNode
+} & ComponentProps<typeof AvatarFallbackShadCN>
 
-const AvatarFallback = ({ text, ...props }: Props) => {
-  return <AvatarFallbackShadCN {...props}>{text}</AvatarFallbackShadCN>
+const AvatarFallback = ({ children, ...props }: Props) => {
+  return <AvatarFallbackShadCN {...props}>{children}</AvatarFallbackShadCN>
 }
 
 export default AvatarFallback
