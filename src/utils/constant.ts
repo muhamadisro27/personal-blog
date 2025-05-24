@@ -2,7 +2,7 @@ import { TProfileMap } from "@/types"
 import { DollarSign, Footprints, SquareUserRound } from "lucide-react"
 
 export const prefix = "Hi, I'm " as const
-export const suffixes = ["Muhamad Isro Sabanur", "Frontend Engineer"] as const
+export const suffixes = ["Muhamad Isro Sabanur", "Frontend Engineer"]
 export const PROFILES: TProfileMap = {
   personal: {
     title: "Personal",

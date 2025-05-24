@@ -46,7 +46,7 @@ const Typewriter = () => {
     )
 
     return () => clearTimeout(timeout)
-  }, [charIndex, isDeleting, commonPrefixLength, currentSuffix])
+  }, [charIndex, isDeleting, commonPrefixLength, currentSuffix, nextSuffix])
 
   return (
     <Typography as="h2" className="text-2xl font-bold animate-type">

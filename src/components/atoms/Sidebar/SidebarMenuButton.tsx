@@ -1,7 +1,7 @@
 import { SidebarMenuButton as SidebarMenuButtonShadCN } from "@/components/ui/sidebar"
 import { cn } from "@/lib/utils"
 import { LucideIcon } from "lucide-react"
-import { ComponentProps, ReactNode } from "react"
+import { ComponentProps } from "react"
 
 type Props = {
   icon?: LucideIcon

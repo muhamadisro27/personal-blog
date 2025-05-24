@@ -22,10 +22,9 @@ import { useSidebarStore } from "@/stores/useSidebarStore"
 import { TProfile, TSidebarMap } from "@/types"
 import { setClassActive, setDefaultValue } from "@/utils"
 import { PROFILES } from "@/utils/constant"
-import { getOrSetSelectedProfileCookie } from "@/utils/cookie"
 import { ChevronsUpDown } from "lucide-react"
 import { useRouter } from "next/navigation"
-import { createElement, useEffect } from "react"
+import { createElement } from "react"
 
 const AppSidebar = () => {
   const selectedProfile = useSidebarStore(

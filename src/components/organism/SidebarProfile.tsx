@@ -13,7 +13,7 @@ const SidebarProfile = ({ children }: Props) => {
 
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>{PROFILES[selectedProfile].title}</SidebarGroupLabel>
+      <SidebarGroupLabel>{PROFILES[selectedProfile ?? 'personal'].title}</SidebarGroupLabel>
       {children}
     </SidebarGroup>
   )
