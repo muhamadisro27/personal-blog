@@ -13,7 +13,6 @@ const Sidebar = () => {
       <SidebarHeader />
       <SidebarContent>
         <SidebarPersonal />
-        {/* <SidebarRun /> */}
       </SidebarContent>
       <SidebarFooter />
       <SidebarRail />
