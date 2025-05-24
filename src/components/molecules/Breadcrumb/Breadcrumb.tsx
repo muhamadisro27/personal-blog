@@ -1,5 +1,4 @@
 import {
-  BreadcrumbItem,
   BreadcrumbList,
   Breadcrumb as BreadcrumbShadCN,
 } from "@/components/ui/breadcrumb"
