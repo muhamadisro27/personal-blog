@@ -29,7 +29,7 @@ const Homepage = () => {
           <Typewriter />
 
           <Box className="mt-4">
-            <Typography className="leading-9">
+            <Typography className="text-[1rem] leading-7 md:text-left md:leading-9">
               Enthusiastic and experienced Frontend Engineer with deep expertise
               in TypeScript and modern web technologies. Committed to building
               clean, scalable, and user-friendly interfaces, with a strong

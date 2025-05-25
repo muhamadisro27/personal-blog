@@ -28,8 +28,8 @@ const SidebarProfile = () => {
       if (loading) {
         return (
           <Fragment key={index}>
-            <Box className="w-full py-1 px-2">
-              <Skeleton className="w-full h-3" />
+            <Box className="w-full py-4 px-2">
+              <Skeleton className="w-full h-3.5" />
             </Box>
           </Fragment>
         )

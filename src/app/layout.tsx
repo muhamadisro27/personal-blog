@@ -7,6 +7,7 @@ import Header from "@/components/organism/Header"
 import { Container } from "@/components/atoms/Container"
 import { Geist } from "next/font/google"
 import AppInitializer from "@/components/molecules/AppInitializer"
+import LoadingPage from "@/components/pages/LoadingPage"
 
 export const metadata: Metadata = {
   title: "Muhamad Isro Sabanur | Personal Website",
@@ -36,7 +37,9 @@ export default function RootLayout({
               <Sidebar />
               <main className="w-full min-h-svh">
                 <Header />
-                <Container>{children}</Container>
+                <Container>
+                  <LoadingPage>{children}</LoadingPage>
+                </Container>
               </main>
             </AppInitializer>
           </SidebarProvider>
