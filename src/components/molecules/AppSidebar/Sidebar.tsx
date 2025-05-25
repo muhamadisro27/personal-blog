@@ -63,7 +63,6 @@ const AppSidebar = () => {
                     PROFILES[selectedProfile].title,
                     "Select Personal"
                   )}
-                  <Home className="ml-auto" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
