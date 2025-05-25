@@ -42,21 +42,17 @@ const SidebarProfile = () => {
             isActive={item.url === currentURL}
             className="py-6"
           >
-            {loading ? (
-              <Skeleton className="rounded-full w-[200px] h-4" />
-            ) : (
-              <Link href={item.url} className="flex items-center gap-2">
-                <item.icon className="w-4 h-4" />
-                <Typography
-                  className={cn(
-                    "transition-all",
-                    setClassActive(currentURL, item.url, "font-bold pl-1")
-                  )}
-                >
-                  {item.label}
-                </Typography>
-              </Link>
-            )}
+            <Link href={item.url} className="flex items-center gap-2">
+              <item.icon className="w-4 h-4" />
+              <Typography
+                className={cn(
+                  "transition-all",
+                  setClassActive(currentURL, item.url, "font-bold pl-1")
+                )}
+              >
+                {item.label}
+              </Typography>
+            </Link>
           </SidebarMenuButton>
         </SidebarMenuItem>
       )

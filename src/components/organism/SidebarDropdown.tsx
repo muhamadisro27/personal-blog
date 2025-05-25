@@ -26,6 +26,7 @@ import { Typography } from "@/components/atoms/Typography"
 import { useSidebarStore } from "@/stores/useSidebarStore"
 import { usePathname, useRouter } from "next/navigation"
 import { getSelectedProfileFromCookie } from "@/utils/cookie"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 const SidebarDropdown = () => {
   const selectedProfile = useSidebarStore(
@@ -34,6 +35,7 @@ const SidebarDropdown = () => {
 
   const router = useRouter()
   const currentURL = usePathname()
+  const isMobile = useIsMobile()
 
   const { setSelectedProfile, loading } = useSidebarStore()
   const handleSelectProfile = (profile: TProfile) => {
@@ -53,7 +55,7 @@ const SidebarDropdown = () => {
     if (findCurrentProfile === existingProfile) return
 
     setSelectedProfile(findCurrentProfile)
-  }, [currentURL, setSelectedProfile])
+  }, [currentURL, setSelectedProfile, isMobile])
 
   return (
     <SidebarMenu>
@@ -76,7 +78,10 @@ const SidebarDropdown = () => {
                 <ChevronsUpDown className="ml-auto" />
               </SidebarMenuButton>
             </DropdownMenuTrigger>
-            <DropdownMenuContent>
+            <DropdownMenuContent
+              side={isMobile ? "bottom" : "right"}
+              className={`${isMobile ? "" : "ml-3 mt-2"}`}
+            >
               {Object.values(PROFILES).map((profile) => {
                 return (
                   <DropdownMenuItem
