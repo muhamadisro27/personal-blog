@@ -1,20 +1,29 @@
 "use client"
-import { SidebarGroup, SidebarGroupLabel } from "@/components/atoms/Sidebar"
+import {
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarMenu,
+} from "@/components/ui/sidebar"
 import { useSidebarStore } from "@/stores/useSidebarStore"
 import { PROFILES } from "@/utils/constant"
 import { ReactNode } from "react"
 
 interface Props {
-  children: ReactNode
+  sidebar: ReactNode
 }
 
-const SidebarProfile = ({ children }: Props) => {
+const SidebarProfile = ({ sidebar }: Props) => {
   const { selectedProfile } = useSidebarStore()
 
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>{PROFILES[selectedProfile ?? 'personal'].title}</SidebarGroupLabel>
-      {children}
+      <SidebarGroupLabel>
+        {PROFILES[selectedProfile ?? "personal"].title}
+      </SidebarGroupLabel>
+      <SidebarGroupContent>
+        <SidebarMenu>{sidebar}</SidebarMenu>
+      </SidebarGroupContent>
     </SidebarGroup>
   )
 }
