@@ -1,14 +1,15 @@
 import { Typography } from "@/components/atoms/Typography"
 import { Code } from "lucide-react"
+import ContainerPage from "../molecules/ContainerPage"
 
 const MaintenancePage = () => {
   return (
-    <div className="flex flex-col h-[calc(100svh-80px)] justify-center  items-center gap-y-4">
+    <ContainerPage>
       <Typography as="h2" className="text-2xl text-center">
         This page is still under development.
       </Typography>
       <Code className="w-20 h-20" />
-    </div>
+    </ContainerPage>
   )
 }
 

@@ -70,7 +70,7 @@ const Typewriter = () => {
     <Typography
       as="h2"
       className={cn(
-        "text-3xl font-bold max-w-max border-r-[5px] border-current pr-1",
+        "md:text-2xl lg:text-3xl text-2xl font-bold max-w-max border-r-[5px] border-current pr-1",
         animateBlink ? "animate-type" : ""
       )}
     >
