@@ -1,17 +1,11 @@
 import SidebarDropdown from "@/components/organism/SidebarDropdown"
 import SidebarHome from "@/components/organism/SidebarHome"
 import SidebarProfile from "@/components/organism/SidebarProfile"
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarHeader,
-} from "@/components/ui/sidebar"
-import ToggleSwitchTheme from "../ToggleSwitchTheme"
+import { Sidebar, SidebarContent, SidebarHeader } from "@/components/ui/sidebar"
 
 const AppSidebar = () => {
   return (
-    <Sidebar>
+    <Sidebar className="border-[#404040] bg-sidebar/20 backdrop-blur-lg">
       <SidebarHeader>
         {/* Profiles */}
         <SidebarDropdown />
@@ -25,9 +19,9 @@ const AppSidebar = () => {
         <SidebarProfile />
       </SidebarContent>
 
-      <SidebarFooter className="items-end">
+      {/* <SidebarFooter className="items-end">
         <ToggleSwitchTheme />
-      </SidebarFooter>
+      </SidebarFooter> */}
     </Sidebar>
   )
 }

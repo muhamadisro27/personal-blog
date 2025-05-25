@@ -9,7 +9,7 @@ const DropdownMenuItem = ({
 }: ComponentProps<typeof DropdownMenuItemShadCN>) => {
   return (
     <DropdownMenuItemShadCN
-      className={cn(`cursor-pointer`, className)}
+      className={cn(`cursor-pointer backdrop-blur-lg`, className)}
       {...props}
     >
       {children}

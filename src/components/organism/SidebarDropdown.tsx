@@ -5,6 +5,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
+  DropdownMenuItem,
 } from "@/components/atoms/Dropdown"
 import { Skeleton } from "@/components/atoms/Skeleton"
 import {
@@ -19,7 +20,6 @@ import {
 } from "@/utils"
 import { ChevronsUpDown } from "lucide-react"
 import { PROFILES, SIDEBAR_MENUS } from "@/utils/constant"
-import { DropdownMenuItem } from "@/components/ui/dropdown-menu"
 import { cn } from "@/lib/utils"
 import { TProfile } from "@/types"
 import { Typography } from "@/components/atoms/Typography"
