@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 
 interface AmbientBackgroundProps {
   children: React.ReactNode
@@ -28,7 +28,7 @@ const AmbientBackground: React.FC<AmbientBackgroundProps> = ({ children }) => {
   const particles = generateParticles()
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-yellow-900/25 to-slate-900">
+    <div className="relative min-h-svh overflow-hidden bg-gradient-to-br from-slate-900 via-yellow-900/25 to-slate-900">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-r from-yellow-600/5 via-transparent to-blue-600/5" />
 
