@@ -1,13 +1,13 @@
-import React from "react"
-import { SidebarTrigger } from "../ui/sidebar"
+import { SidebarTrigger } from "@/components/ui/sidebar"
 import ToggleSwitchTheme from "../molecules/ToggleSwitchTheme"
+import Box from "@/components/atoms/Box/Box"
 
 const Header = () => {
   return (
-    <div className="flex flex-row w-full justify-between px-2 py-1">
+    <Box className="flex flex-row w-full justify-between px-2 py-1">
       <SidebarTrigger />
       <ToggleSwitchTheme />
-    </div>
+    </Box>
   )
 }
 

@@ -49,7 +49,7 @@ const Typewriter = () => {
   }, [charIndex, isDeleting, commonPrefixLength, currentSuffix, nextSuffix])
 
   return (
-    <Typography as="h2" className="text-2xl font-bold animate-type">
+    <Typography as="h2" className="text-3xl font-bold animate-type max-w-max">
       {displayed}
     </Typography>
   )
