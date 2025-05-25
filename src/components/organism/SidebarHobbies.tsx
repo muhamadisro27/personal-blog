@@ -7,7 +7,7 @@ import {
   SidebarGroup,
   SidebarGroupLabel,
 } from "@/components/ui/sidebar"
-import { PersonStanding, Home } from "lucide-react"
+import { PersonStanding, Home, BookOpenCheck } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
@@ -17,6 +17,11 @@ const SidebarHobbies = () => {
       name: "Run Activities",
       url: "/run-activities",
       icon: PersonStanding,
+    },
+    {
+      name: "Books",
+      url: "/books",
+      icon: BookOpenCheck,
     },
   ]
 

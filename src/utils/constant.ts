@@ -1,4 +1,4 @@
-import { TProfileMap } from "@/types"
+import { TAppModeMap, TProfileMap } from "@/types"
 import { DollarSign, Footprints, SquareUserRound } from "lucide-react"
 
 export const prefix = "Hi, I'm " as const
@@ -20,3 +20,11 @@ export const PROFILES: TProfileMap = {
     icon: DollarSign,
   },
 } as const
+
+export const APP_MODE: TAppModeMap = {
+  development: "development",
+  production: "production",
+}
+
+export const CURRENT_APP_MODE =
+  process.env.NEXT_PUBLIC_APP_MODE ?? APP_MODE.production

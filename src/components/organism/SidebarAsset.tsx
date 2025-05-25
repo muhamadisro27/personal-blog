@@ -7,7 +7,7 @@ import {
   SidebarGroup,
   SidebarGroupLabel,
 } from "@/components/ui/sidebar"
-import { ChartLine, Home } from "lucide-react"
+import { ChartLine, Cuboid, Home } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
@@ -17,6 +17,11 @@ const SidebarAsset = () => {
       name: "Reksadana",
       url: "/reksadana",
       icon: ChartLine,
+    },
+    {
+      name: "Gold",
+      url: "/gold",
+      icon: Cuboid,
     },
   ]
 
