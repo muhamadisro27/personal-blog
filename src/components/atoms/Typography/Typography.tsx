@@ -14,10 +14,7 @@ const Typography = <T extends ElementType = "p">({
   const Component = as || "p"
 
   return (
-    <Component
-      className={cn("", className)}
-      {...props}
-    >
+    <Component className={cn("", className)} {...props}>
       {children}
     </Component>
   )
