@@ -15,8 +15,8 @@ import Link from "next/link"
 const SidebarPersonal = () => {
   const MENU_ITEMS = [
     {
-      name: "About Us",
-      url: "/about-us",
+      name: "About",
+      url: "/about",
       icon: Leaf,
     },
     {

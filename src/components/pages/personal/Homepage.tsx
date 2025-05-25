@@ -1,7 +1,7 @@
 import { Breadcrumb } from "@/components/atoms/Breadcrumb"
 import { IBreadcrumbLink } from "@/types"
 import Box from "@/components/atoms/Box/Box"
-import { Typewriter } from "../molecules/Typewriter"
+import { Typewriter } from "../../molecules/Typewriter"
 
 const Homepage = () => {
   const breadcrumbLinks: IBreadcrumbLink[] = [
