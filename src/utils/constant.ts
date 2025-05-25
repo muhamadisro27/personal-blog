@@ -12,7 +12,7 @@ import {
 } from "lucide-react"
 
 export const prefix = "Hi, I'm " as const
-export const suffixes = ["Muhamad Isro Sabanur", "Frontend Engineer"]
+export const suffixes = ["Muhamad Isro", "Frontend Engineer"]
 export const PROFILES: TProfileMap = {
   personal: {
     title: "Personal",
