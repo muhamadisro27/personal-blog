@@ -2,7 +2,7 @@ import { ComponentProps, ReactNode } from "react"
 import { CardTitle as CardTitleShadCN } from "@/components/ui/card"
 
 type Props = {
-  children: ReactNode
+  children?: ReactNode
 } & ComponentProps<typeof CardTitleShadCN>
 
 const CardTitle = ({ children, ...props }: Props) => {

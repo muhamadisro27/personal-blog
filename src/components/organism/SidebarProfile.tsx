@@ -37,7 +37,11 @@ const SidebarProfile = () => {
 
       return (
         <SidebarMenuItem key={item.label}>
-          <SidebarMenuButton asChild isActive={item.url === currentURL}>
+          <SidebarMenuButton
+            asChild
+            isActive={item.url === currentURL}
+            className="py-6"
+          >
             {loading ? (
               <Skeleton className="rounded-full w-[200px] h-4" />
             ) : (
@@ -65,7 +69,9 @@ const SidebarProfile = () => {
         {loading ? (
           <Skeleton className="rounded-full w-[70px] h-3" />
         ) : (
-          <>{PROFILES[profile].title}</>
+          <Typography as="span" className="text-sm">
+            {PROFILES[profile].title}
+          </Typography>
         )}
       </SidebarGroupLabel>
       <SidebarGroupContent>

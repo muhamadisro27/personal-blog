@@ -12,7 +12,7 @@ import {
 } from "lucide-react"
 
 export const prefix = "Hi, I'm " as const
-export const suffixes = ["Muhamad Isro Sabanur", "Frontend Engineer"]
+export const suffixes = ["Muhamad Isro", "Frontend Engineer"]
 export const PROFILES: TProfileMap = {
   personal: {
     title: "Personal",
@@ -77,3 +77,26 @@ export const SIDEBAR_MENUS: TSidebarMenuMap = {
     },
   ],
 }
+
+export const SERVICES = [
+  {
+    title: "Custom Web Application Development",
+    description:
+      "Building web applications from the ground up using scalable architecture and high-performance technologies.",
+  },
+  {
+    title: "Responsive & Mobile-First Design",
+    description:
+      "A mobile-first approach ensures accessibility and consistent layout from phones to large monitors.",
+  },
+  {
+    title: "Performance Optimization & SEO",
+    description:
+      "Improving website speed, loading times, and overall efficiency using server-side rendering, lazy loading, and code splitting.",
+  },
+  {
+    title: "Admin Panels & Custom Dashboards",
+    description:
+      "Developing intuitive admin interfaces to manage data, users, and content efficiently.",
+  },
+] as const
