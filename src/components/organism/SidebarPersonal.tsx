@@ -3,6 +3,9 @@ import { SidebarMenuItem, SidebarMenuButton } from "@/components/ui/sidebar"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { SIDEBAR_MENUS } from "@/utils/constant"
+import { cn } from "@/lib/utils"
+import { setClassActive } from "@/utils"
+import { Typography } from "../atoms/Typography"
 
 const SidebarPersonal = () => {
   const currentURL = usePathname()
@@ -15,7 +18,12 @@ const SidebarPersonal = () => {
             <SidebarMenuButton asChild isActive={item.url === currentURL}>
               <Link href={item.url} className="flex items-center gap-2">
                 <item.icon className="w-4 h-4" />
-                <span>{item.label}</span>
+                <Typography
+                  as="span"
+                  className={cn('transition-all', setClassActive(currentURL, item.url, "font-bold pl-1"))}
+                >
+                  {item.label}
+                </Typography>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

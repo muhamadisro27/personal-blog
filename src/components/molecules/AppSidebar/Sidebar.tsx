@@ -99,7 +99,15 @@ const AppSidebar = () => {
                 <SidebarMenuButton asChild>
                   <Link href={"/"} className="flex items-center gap-2">
                     <Home className="w-4 h-4" />
-                    <span>Home</span>
+                    <Typography
+                      as="span"
+                      className={cn(
+                        "transition-all",
+                        setClassActive("/", "/", "font-bold pl-1")
+                      )}
+                    >
+                      Home
+                    </Typography>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
