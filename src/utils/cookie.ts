@@ -6,6 +6,7 @@ const DEFAULT_PROFILE: TProfile = "personal"
 
 export const getSelectedProfileFromCookie = (): TProfile => {
   const cookie = Cookies.get(COOKIE_KEY) as TProfile | undefined
+
   return cookie ?? DEFAULT_PROFILE
 }
 

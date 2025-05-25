@@ -1,7 +1,3 @@
-import React from "react"
-import { Breadcrumb } from "@/components/atoms/Breadcrumb"
-import { IBreadcrumbLink } from "@/types"
-
 const ContactPage = () => {
   //    const breadcrumbLinks: IBreadcrumbLink[] = [
   //   {

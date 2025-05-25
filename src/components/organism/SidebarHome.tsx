@@ -21,7 +21,11 @@ const SidebarHome = () => {
       <SidebarGroupContent>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild>
+            <SidebarMenuButton
+              asChild
+              isActive={"/" === currentURL}
+              className="py-6"
+            >
               <Link href={"/"} className="flex items-center gap-2">
                 <Home className="w-4 h-4" />
                 <Typography

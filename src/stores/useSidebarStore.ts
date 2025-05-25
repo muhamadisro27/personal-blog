@@ -15,9 +15,11 @@ export const useSidebarStore = create<ISidebarStore>((set) => ({
   },
   initializeProfile: async () => {
     const profile = await getSelectedProfileFromCookie()
-
+    set({
+      selectedProfile: profile ?? "personal",
+    })
     setTimeout(() => {
-      set({ selectedProfile: profile ?? "personal", loading: false })
+      set({ loading: false })
     }, 500)
   },
 }))

@@ -1,5 +1,5 @@
 "use client"
-import { createElement } from "react"
+import { createElement, useEffect } from "react"
 import Box from "@/components/atoms/Box/Box"
 import {
   DropdownMenu,
@@ -12,7 +12,11 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { setClassActive, setDefaultValue } from "@/utils"
+import {
+  findProfileByCurrentUrl,
+  setClassActive,
+  setDefaultValue,
+} from "@/utils"
 import { ChevronsUpDown } from "lucide-react"
 import { PROFILES, SIDEBAR_MENUS } from "@/utils/constant"
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu"
@@ -21,6 +25,7 @@ import { TProfile } from "@/types"
 import { Typography } from "@/components/atoms/Typography"
 import { useSidebarStore } from "@/stores/useSidebarStore"
 import { usePathname, useRouter } from "next/navigation"
+import { getSelectedProfileFromCookie } from "@/utils/cookie"
 
 const SidebarDropdown = () => {
   const selectedProfile = useSidebarStore(
@@ -29,6 +34,7 @@ const SidebarDropdown = () => {
 
   const router = useRouter()
   const currentURL = usePathname()
+
   const { setSelectedProfile, loading } = useSidebarStore()
   const handleSelectProfile = (profile: TProfile) => {
     if (profile === selectedProfile) return
@@ -37,6 +43,18 @@ const SidebarDropdown = () => {
     if (currentURL !== "/" && profile === "personal") return router.push("/")
     if (currentURL !== "/") return router.push(SIDEBAR_MENUS[profile][0].url)
   }
+
+  useEffect(() => {
+    const findCurrentProfile = findProfileByCurrentUrl(currentURL) as TProfile
+    const existingProfile = getSelectedProfileFromCookie()
+
+    if (findCurrentProfile === undefined) return setSelectedProfile("personal")
+
+    if (findCurrentProfile === existingProfile) return
+
+    setSelectedProfile(findCurrentProfile)
+  }, [currentURL, setSelectedProfile])
+
   return (
     <SidebarMenu>
       <SidebarMenuItem>
@@ -65,7 +83,7 @@ const SidebarDropdown = () => {
                     onClick={() => handleSelectProfile(profile.value)}
                     key={profile.title}
                     className={cn(
-                      "py-4",
+                      "py-4 cursor-pointer",
                       setClassActive<TProfile>(
                         selectedProfile,
                         profile.value,
