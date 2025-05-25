@@ -5,24 +5,28 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/atoms/Dropdown"
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-} from "@/components/atoms/Sidebar"
 import { Typography } from "@/components/atoms/Typography"
 import SidebarAsset from "@/components/organism/SidebarAsset"
 import SidebarHobbies from "@/components/organism/SidebarHobbies"
 import SidebarPersonal from "@/components/organism/SidebarPersonal"
+import SidebarProfile from "@/components/organism/SidebarProfile"
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from "@/components/ui/sidebar"
 import { cn } from "@/lib/utils"
 import { useSidebarStore } from "@/stores/useSidebarStore"
 import { TProfile, TSidebarMap } from "@/types"
 import { setClassActive, setDefaultValue } from "@/utils"
-import { PROFILES } from "@/utils/constant"
-import { ChevronsUpDown } from "lucide-react"
+import { PROFILES, SIDEBAR_MENUS } from "@/utils/constant"
+import { Home } from "lucide-react"
+import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { createElement } from "react"
 
@@ -37,7 +41,7 @@ const AppSidebar = () => {
     if (profile === selectedProfile) return
 
     setSelectedProfile(profile)
-    router.push("/")
+    router.push(SIDEBAR_MENUS[profile][0].url)
   }
 
   const SIDEBAR_COMPONENT_MAP: TSidebarMap = {
@@ -46,8 +50,6 @@ const AppSidebar = () => {
     asset: <SidebarAsset />,
   } as const
 
-  const renderSidebarContent = () => SIDEBAR_COMPONENT_MAP[selectedProfile]
-
   return (
     <Sidebar>
       <SidebarHeader>
@@ -55,12 +57,13 @@ const AppSidebar = () => {
           <SidebarMenuItem>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <SidebarMenuButton className="py-6" icon={ChevronsUpDown}>
+                <SidebarMenuButton className="py-6">
                   {createElement(PROFILES[selectedProfile].icon)}
                   {setDefaultValue(
                     PROFILES[selectedProfile].title,
                     "Select Personal"
                   )}
+                  <Home className="ml-auto" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
@@ -88,7 +91,24 @@ const AppSidebar = () => {
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent>{renderSidebarContent()}</SidebarContent>
+
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href={"/"} className="flex items-center gap-2">
+                    <Home className="w-4 h-4" />
+                    <span>Home</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        <SidebarProfile sidebar={SIDEBAR_COMPONENT_MAP[selectedProfile]} />
+      </SidebarContent>
     </Sidebar>
   )
 }
