@@ -25,9 +25,9 @@ import { useSidebarStore } from "@/stores/useSidebarStore"
 import { TProfile, TSidebarMap } from "@/types"
 import { setClassActive, setDefaultValue } from "@/utils"
 import { PROFILES, SIDEBAR_MENUS } from "@/utils/constant"
-import { Home } from "lucide-react"
+import { ChevronsUpDown, Home } from "lucide-react"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { createElement } from "react"
 
 const AppSidebar = () => {
@@ -35,13 +35,15 @@ const AppSidebar = () => {
     (state) => state.selectedProfile ?? "personal"
   )
   const router = useRouter()
+  const currentURL = usePathname()
   const { setSelectedProfile } = useSidebarStore()
 
   const handleSelectProfile = (profile: TProfile) => {
     if (profile === selectedProfile) return
 
     setSelectedProfile(profile)
-    router.push(SIDEBAR_MENUS[profile][0].url)
+    if (currentURL !== "/" && profile === "personal") return router.push("/")
+    if (currentURL !== "/") return router.push(SIDEBAR_MENUS[profile][0].url)
   }
 
   const SIDEBAR_COMPONENT_MAP: TSidebarMap = {
@@ -57,12 +59,13 @@ const AppSidebar = () => {
           <SidebarMenuItem>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <SidebarMenuButton className="py-6">
+                <SidebarMenuButton className="py-6 focus-visible:ring-0">
                   {createElement(PROFILES[selectedProfile].icon)}
                   {setDefaultValue(
                     PROFILES[selectedProfile].title,
                     "Select Personal"
                   )}
+                  <ChevronsUpDown className="ml-auto" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
@@ -96,14 +99,14 @@ const AppSidebar = () => {
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild>
+                <SidebarMenuButton asChild isActive={"/" === currentURL}>
                   <Link href={"/"} className="flex items-center gap-2">
                     <Home className="w-4 h-4" />
                     <Typography
                       as="span"
                       className={cn(
                         "transition-all",
-                        setClassActive("/", "/", "font-bold pl-1")
+                        setClassActive(currentURL, "/", "font-bold pl-1")
                       )}
                     >
                       Home

@@ -5,7 +5,7 @@ import Link from "next/link"
 import { SIDEBAR_MENUS } from "@/utils/constant"
 import { cn } from "@/lib/utils"
 import { setClassActive } from "@/utils"
-import { Typography } from "../atoms/Typography"
+import { Typography } from "@/components/atoms/Typography"
 
 const SidebarPersonal = () => {
   const currentURL = usePathname()
