@@ -1,4 +1,5 @@
 "use client"
+import Box from "@/components/atoms/Box/Box"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -6,9 +7,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/atoms/Dropdown"
 import { Typography } from "@/components/atoms/Typography"
-import SidebarAsset from "@/components/organism/SidebarAsset"
-import SidebarHobbies from "@/components/organism/SidebarHobbies"
-import SidebarPersonal from "@/components/organism/SidebarPersonal"
 import SidebarProfile from "@/components/organism/SidebarProfile"
 import {
   Sidebar,
@@ -20,9 +18,10 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import { Skeleton } from "@/components/ui/skeleton"
 import { cn } from "@/lib/utils"
 import { useSidebarStore } from "@/stores/useSidebarStore"
-import { TProfile, TSidebarMap } from "@/types"
+import { TProfile } from "@/types"
 import { setClassActive, setDefaultValue } from "@/utils"
 import { PROFILES, SIDEBAR_MENUS } from "@/utils/constant"
 import { ChevronsUpDown, Home } from "lucide-react"
@@ -36,8 +35,7 @@ const AppSidebar = () => {
   )
   const router = useRouter()
   const currentURL = usePathname()
-  const { setSelectedProfile } = useSidebarStore()
-
+  const { setSelectedProfile, loading } = useSidebarStore()
   const handleSelectProfile = (profile: TProfile) => {
     if (profile === selectedProfile) return
 
@@ -46,50 +44,52 @@ const AppSidebar = () => {
     if (currentURL !== "/") return router.push(SIDEBAR_MENUS[profile][0].url)
   }
 
-  const SIDEBAR_COMPONENT_MAP: TSidebarMap = {
-    personal: <SidebarPersonal />,
-    hobbies: <SidebarHobbies />,
-    asset: <SidebarAsset />,
-  } as const
-
   return (
     <Sidebar>
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <SidebarMenuButton className="py-6 focus-visible:ring-0">
-                  {createElement(PROFILES[selectedProfile].icon)}
-                  {setDefaultValue(
-                    PROFILES[selectedProfile].title,
-                    "Select Personal"
-                  )}
-                  <ChevronsUpDown className="ml-auto" />
-                </SidebarMenuButton>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                {Object.values(PROFILES).map((profile) => {
-                  return (
-                    <DropdownMenuItem
-                      onClick={() => handleSelectProfile(profile.value)}
-                      key={profile.title}
-                      className={cn(
-                        "py-4",
-                        setClassActive<TProfile>(
-                          selectedProfile,
-                          profile.value,
-                          "font-bold bg-sidebar-accent"
-                        )
-                      )}
-                    >
-                      <profile.icon />
-                      <Typography as="span">{profile.title}</Typography>
-                    </DropdownMenuItem>
-                  )
-                })}
-              </DropdownMenuContent>
-            </DropdownMenu>
+            {loading ? (
+              <Box className="flex items-center space-x-2 px-2 py-4">
+                <Skeleton className="h-4 w-4 rounded-full" />
+                <Skeleton className="w-full h-4 " />
+                <Skeleton className="h-4 w-4 rounded-full" />
+              </Box>
+            ) : (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <SidebarMenuButton className="py-6 focus-visible:ring-0">
+                    {createElement(PROFILES[selectedProfile].icon)}
+                    {setDefaultValue(
+                      PROFILES[selectedProfile].title,
+                      "Select Personal"
+                    )}
+                    <ChevronsUpDown className="ml-auto" />
+                  </SidebarMenuButton>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  {Object.values(PROFILES).map((profile) => {
+                    return (
+                      <DropdownMenuItem
+                        onClick={() => handleSelectProfile(profile.value)}
+                        key={profile.title}
+                        className={cn(
+                          "py-4",
+                          setClassActive<TProfile>(
+                            selectedProfile,
+                            profile.value,
+                            "font-bold bg-sidebar-accent"
+                          )
+                        )}
+                      >
+                        <profile.icon />
+                        <Typography as="span">{profile.title}</Typography>
+                      </DropdownMenuItem>
+                    )
+                  })}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            )}
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
@@ -117,7 +117,9 @@ const AppSidebar = () => {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
-        <SidebarProfile sidebar={SIDEBAR_COMPONENT_MAP[selectedProfile]} />
+
+        {/* List Profile */}
+        <SidebarProfile />
       </SidebarContent>
     </Sidebar>
   )
