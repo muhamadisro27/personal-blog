@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/atoms/Card"
 import { SERVICES } from "@/utils/constant"
+import Image from "next/image"
 
 const Homepage = () => {
   // const breadcrumbLinks: IBreadcrumbLink[] = [
@@ -51,11 +52,23 @@ const Homepage = () => {
               I specialize in the following services
             </Typography>
 
-            <Box className="mt-5 grid gap-y-4 gap-x-0 md:grid-cols-2 md:gap-x-4">
+            <Box className="mt-5 grid gap-y-4 gap-x-0 sm:grid-cols-2 sm:gap-x-4">
               {SERVICES.map((service, idx) => (
                 <Card key={idx} className="border-[#404040]">
-                  <CardHeader>
-                    <CardTitle>
+                  <CardHeader className="p-4">
+                    <Box className="relative w-full h-[300px] m-auto">
+                      <Image
+                        src={`/images/services/${service.image}`}
+                        alt={service.title}
+                        title={service.title}
+                        fill
+                        className="object-cover rounded-md"
+                        sizes="(max-width: 768px) 100vw, 350px"
+                        aria-description={service.description}
+                        priority
+                      />
+                    </Box>
+                    <CardTitle className="pt-2">
                       <Typography as="h5" className="font-semibold text-lg">
                         {service.title}
                       </Typography>
