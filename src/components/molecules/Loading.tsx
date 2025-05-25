@@ -1,6 +1,8 @@
 "use client"
 import { motion } from "framer-motion"
 import ContainerPage from "@/components/molecules/ContainerPage"
+import Box from "@/components/atoms/Box/Box"
+import { Typography } from "../atoms/Typography"
 
 const Loading = () => {
   const itemVariants = {
@@ -37,43 +39,45 @@ const Loading = () => {
 
   return (
     <ContainerPage>
-      <div className="text-center space-y-8">
+      <Box className="text-center space-y-8">
         <motion.div variants={itemVariants}>
-          <div className="relative">
+          <Box className="relative">
             <motion.div
               className="w-20 h-20 mx-auto rounded-full border-4 border-muted"
               variants={circleVariants}
               animate="animate"
             />
             <motion.div
-              className="absolute inset-0 w-20 h-20 mx-auto rounded-full border-4 border-transparent border-t-primary"
+              className="absolute inset-0 w-20 h-20 mx-auto rounded-full border-4 border-transparent border-t-primary/90 animate-pulse backdrop-blur-lg"
               variants={circleVariants}
               animate="animate"
               style={{ animationDelay: "0.5s" }}
             />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-8 h-8 bg-primary rounded-full" />
-            </div>
-          </div>
+            <Box className="absolute inset-0 flex items-center justify-center">
+              <Box className="w-8 h-8 bg-primary/80 backdrop-blur-lg rounded-full animate-pulse" />
+            </Box>
+          </Box>
         </motion.div>
 
         {/* Loading Text */}
         <motion.div variants={itemVariants}>
-          <h2 className="text-3xl font-bold text-foreground mb-2">Loading</h2>
+          <Typography as="h2" className="text-3xl font-bold mb-2 animate-pulse backdrop-blur-lg">
+            Loading
+          </Typography>
           <div className="flex items-center justify-center space-x-1">
             <motion.div
-              className="w-2 h-2 bg-primary rounded-full"
+              className="w-2 h-2 bg-primary/50 rounded-full"
               variants={dotVariants}
               animate="animate"
             />
             <motion.div
-              className="w-2 h-2 bg-primary rounded-full"
+              className="w-2 h-2 bg-primary/50 rounded-full"
               variants={dotVariants}
               animate="animate"
               style={{ animationDelay: "0.2s" }}
             />
             <motion.div
-              className="w-2 h-2 bg-primary rounded-full"
+              className="w-2 h-2 bg-primary/50 rounded-full"
               variants={dotVariants}
               animate="animate"
               style={{ animationDelay: "0.4s" }}
@@ -87,7 +91,7 @@ const Loading = () => {
             Preparing your experience...
           </p>
         </motion.div>
-      </div>
+      </Box>
     </ContainerPage>
   )
 }

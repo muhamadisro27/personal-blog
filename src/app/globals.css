@@ -89,6 +89,19 @@
     animation: blink-caret 0.8s step-end infinite;
   }
 
+  .slow-spin {
+    animation: spin 10s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
   @keyframes blink-caret {
     from,
     to {

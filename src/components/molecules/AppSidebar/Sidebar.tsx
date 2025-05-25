@@ -5,7 +5,7 @@ import { Sidebar, SidebarContent, SidebarHeader } from "@/components/ui/sidebar"
 
 const AppSidebar = () => {
   return (
-    <Sidebar>
+    <Sidebar className="border-[#404040] bg-sidebar/20 backdrop-blur-lg">
       <SidebarHeader>
         {/* Profiles */}
         <SidebarDropdown />
@@ -18,6 +18,10 @@ const AppSidebar = () => {
         {/* Profile */}
         <SidebarProfile />
       </SidebarContent>
+
+      {/* <SidebarFooter className="items-end">
+        <ToggleSwitchTheme />
+      </SidebarFooter> */}
     </Sidebar>
   )
 }

@@ -9,7 +9,10 @@ const DropdownMenuContent = ({
 }: ComponentProps<typeof DropdownMenuContentShadCN>) => {
   return (
     <DropdownMenuContentShadCN
-      className={cn("w-[--radix-popper-anchor-width]", className)}
+      className={cn(
+        "w-[--radix-popper-anchor-width] bg-popover/40 backdrop-blur-lg",
+        className
+      )}
       {...props}
     >
       {children}

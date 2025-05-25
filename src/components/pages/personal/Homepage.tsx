@@ -49,12 +49,12 @@ const Homepage = () => {
               Services
             </Typography>
             <Typography as="p" className="text-base">
-              I specialize in the following services
+              These are the solutions I can bring to your business
             </Typography>
 
             <Box className="mt-5 grid gap-y-4 gap-x-0 sm:grid-cols-2 sm:gap-x-4">
               {SERVICES.map((service, idx) => (
-                <Card key={idx} className="border-[#404040]">
+                <Card key={idx}>
                   <CardHeader className="p-4">
                     <Box className="relative w-full h-[300px] m-auto">
                       <Image

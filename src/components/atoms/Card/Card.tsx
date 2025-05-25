@@ -6,7 +6,14 @@ type Props = {
 } & ComponentProps<typeof CardShadCN>
 
 const Card = ({ children, ...props }: Props) => {
-  return <CardShadCN {...props}>{children}</CardShadCN>
+  return (
+    <CardShadCN
+      className="border-[#404040] bg-card/40 backdrop-blur-lg"
+      {...props}
+    >
+      {children}
+    </CardShadCN>
+  )
 }
 
 export default Card
