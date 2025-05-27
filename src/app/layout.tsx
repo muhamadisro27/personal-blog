@@ -9,6 +9,9 @@ import { Geist } from "next/font/google"
 import AppInitializer from "@/components/molecules/AppInitializer"
 import LoadingPage from "@/components/pages/LoadingPage"
 import AmbientBackground from "@/components/molecules/AmbientBackground"
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { APP_MODE, CURRENT_APP_MODE } from "@/utils/constant"
 
 export const metadata: Metadata = {
   title: "Muhamad Isro Sabanur | Personal Website",
@@ -24,9 +27,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const renderAnalytic = () =>
+    CURRENT_APP_MODE === APP_MODE.production ? <Analytics /> : <></>
+  const renderSpeedInsight = () =>
+    CURRENT_APP_MODE === APP_MODE.production ? <SpeedInsights /> : <></>
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geist.className} antialiased`}>
+        {renderAnalytic()}
+        {renderSpeedInsight()}
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
