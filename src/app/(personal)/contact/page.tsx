@@ -1,6 +1,6 @@
 import ContactPage from "@/components/pages/personal/ContactPage"
 import MaintenancePage from "@/components/pages/MaintenancePage"
-import { isFeatureEnabled } from "@/lib/feature-flags"
+import { isFeatureEnabled } from "@/lib/flags"
 
 const Page = () =>
   isFeatureEnabled("contact") ? <ContactPage /> : <MaintenancePage />
