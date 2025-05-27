@@ -7,7 +7,7 @@ const useMount = (timer: number = 0) => {
     setTimeout(() => {
       setLoading(false)
     }, timer)
-  }, [])
+  }, [timer])
 
   return {
     loading,

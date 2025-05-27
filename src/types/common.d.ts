@@ -1,6 +1,12 @@
 import { ReactNode } from "react"
 import { TProfile } from "./profile"
 import { LucideIcon } from "lucide-react"
+import {
+  AnimationControls,
+  TargetAndTransition,
+  VariantLabels,
+  Transition,
+} from "framer-motion"
 
 export interface IBreadcrumbLink {
   title: string
@@ -27,4 +33,16 @@ interface TSidebarMenu {
 
 export type TSidebarMenuMap = {
   [K in TProfile]: TSidebarMenu[]
+}
+
+export type TOnMountedAnimated = {
+  transition: Transition | undefined
+  initial?: boolean | TargetAndTransition | VariantLabels | undefined
+  animate?:
+    | boolean
+    | TargetAndTransition
+    | VariantLabels
+    | AnimationControls
+    | undefined
+  exit?: TargetAndTransition | VariantLabels | undefined
 }

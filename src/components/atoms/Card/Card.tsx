@@ -9,7 +9,7 @@ type Props = {
 const Card = ({ children, className, ...props }: Props) => {
   return (
     <CardShadCN
-      className={cn("border-[#404040] bg-card/40 backdrop-blur-lg transition-all", className)}
+      className={cn("border-2 border-[#404040] bg-card/35 backdrop-blur-lg transition-all", className)}
       {...props}
     >
       {children}

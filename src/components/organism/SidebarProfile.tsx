@@ -13,7 +13,6 @@ import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { Typography } from "../atoms/Typography"
 import { cn } from "@/lib/utils"
-import { setClassActive } from "@/utils"
 import { Skeleton } from "@/components/atoms/Skeleton"
 import { Box } from "@/components/atoms/Box"
 import { Fragment } from "react"
@@ -23,6 +22,8 @@ const SidebarProfile = () => {
   const { selectedProfile, loading } = useSidebarStore()
   const currentURL = usePathname()
   const profile = selectedProfile ?? "personal"
+
+  const setActive = (url: string) => (url === currentURL ? true : false)
 
   const renderSidebarMenuItem = () => {
     return Object.values(SIDEBAR_MENUS[profile]).map((item, index) => {
@@ -47,23 +48,25 @@ const SidebarProfile = () => {
             filter: "blur(0px)",
           }}
           transition={{
-            duration: 0.2,
-            ease: "easeOut",
+            duration: 0.8,
+            ease: "ease",
+          }}
+          exit={{
+            opacity: 0,
           }}
           key={item.label}
         >
           <SidebarMenuItem>
-            <SidebarMenuButton
-              asChild
-              isActive={item.url === currentURL}
-              className="py-6"
-            >
+            <SidebarMenuButton asChild isActive={setActive(item.url)} className="py-6">
               <Link href={item.url} className="flex items-center gap-2">
-                <item.icon className="w-4 h-4" />
+                <item.icon
+                  data-active={setActive(item.url)}
+                  className="w-4 h-4 data-[active=true]:dark:text-primary/70"
+                />
                 <Typography
+                  data-active={setActive(item.url)}
                   className={cn(
-                    "transition-all",
-                    setClassActive(currentURL, item.url, "font-bold pl-1")
+                    "transition-all pl-0 data-[active=true]:font-bold data-[active=true]:pl-1 data-[active=true]:dark:text-primary/70"
                   )}
                 >
                   {item.label}

@@ -8,8 +8,6 @@ import {
 } from "@/components/ui/sidebar"
 import { Home } from "lucide-react"
 import { Typography } from "@/components/atoms/Typography"
-import { cn } from "@/lib/utils"
-import { setClassActive } from "@/utils"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { useSidebarStore } from "@/stores/useSidebarStore"
@@ -38,13 +36,16 @@ const SidebarHome = () => {
                 </Box>
               ) : (
                 <Link href={"/"} className="flex items-center gap-2">
-                  <Home className="w-4 h-4" />
+                  <Home
+                    data-active={setActive()}
+                    className="w-4 h-4 data-[active=true]:dark:text-primary/70"
+                  />
                   <Typography
                     as="span"
-                    className={cn(
-                      "transition-all",
-                      setClassActive(currentURL, "/", "font-bold pl-1")
-                    )}
+                    data-active={setActive()}
+                    className={
+                      "transition-all pl-0 data-[active=true]:font-bold data-[active=true]:pl-1 data-[active=true]:dark:text-primary/70"
+                    }
                   >
                     Home
                   </Typography>

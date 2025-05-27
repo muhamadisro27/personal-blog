@@ -20,7 +20,6 @@ import {
 } from "@/utils"
 import { ChevronsUpDown } from "lucide-react"
 import { PROFILES, SIDEBAR_MENUS } from "@/utils/constant"
-import { cn } from "@/lib/utils"
 import { TProfile } from "@/types"
 import { Typography } from "@/components/atoms/Typography"
 import { useSidebarStore } from "@/stores/useSidebarStore"
@@ -103,17 +102,25 @@ const SidebarDropdown = () => {
                   <DropdownMenuItem
                     onClick={() => handleSelectProfile(profile.value)}
                     key={profile.title}
-                    className={cn(
-                      "py-4 cursor-pointer",
-                      setClassActive<TProfile>(
-                        selectedProfile,
-                        profile.value,
-                        "font-bold bg-sidebar-accent"
-                      )
-                    )}
+                    className="py-4 cursor-pointer"
                   >
-                    <profile.icon />
-                    <Typography as="span">{profile.title}</Typography>
+                    <profile.icon
+                      data-active={setClassActive<TProfile>(
+                        selectedProfile,
+                        profile.value
+                      )}
+                      className="data-[active=true]:dark:text-primary/70"
+                    />
+                    <Typography
+                      as="span"
+                      data-active={setClassActive<TProfile>(
+                        selectedProfile,
+                        profile.value
+                      )}
+                      className="data-[active=true]:font-bold data-[active=true]:dark:text-primary/70"
+                    >
+                      {profile.title}
+                    </Typography>
                   </DropdownMenuItem>
                 )
               })}
