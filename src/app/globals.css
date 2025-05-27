@@ -79,8 +79,14 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
+  }
+
+  html body[data-scroll-locked] {
+    margin-right: 0 !important;
+    --removed-body-scroll-bar-size: 0;
   }
 
   .animate-type {
@@ -101,7 +107,7 @@
       transform: rotate(360deg);
     }
   }
-  
+
   @keyframes blink-caret {
     from,
     to {
