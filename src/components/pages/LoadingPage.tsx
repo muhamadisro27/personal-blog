@@ -1,17 +1,12 @@
 "use client"
-import { Fragment, ReactNode, useEffect, useState } from "react"
+import { Fragment, ReactNode } from "react"
 import Loading from "@/components/molecules/Loading"
+import useMount from "@/hooks/use-mount"
 
 const LoadingPage = ({ children }: { children: ReactNode }) => {
-  const [isLoading, setIsLoading] = useState(true)
+  const { loading } = useMount(2000)
 
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 2000)
-  }, [])
-
-  return <>{isLoading ? <Loading /> : <Fragment>{children}</Fragment>}</>
+  return <>{loading ? <Loading /> : <Fragment>{children}</Fragment>}</>
 }
 
 export default LoadingPage

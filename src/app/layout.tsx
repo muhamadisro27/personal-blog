@@ -13,6 +13,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { APP_MODE } from "@/utils/constant"
 import { runtimeConfig } from "@/lib/config"
+import AnimatePage from "@/components/pages/AnimatePage"
 
 export const metadata: Metadata = {
   title: "Muhamad Isro Sabanur | Personal Website",
@@ -38,9 +39,11 @@ export default function RootLayout({
 
   const renderChildren = () =>
     appMode === APP_MODE.production ? (
-      <LoadingPage>{children}</LoadingPage>
+      <LoadingPage>
+        <AnimatePage>{children}</AnimatePage>
+      </LoadingPage>
     ) : (
-      <>{children}</>
+      <AnimatePage>{children}</AnimatePage>
     )
 
   return (

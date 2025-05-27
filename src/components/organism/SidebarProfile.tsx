@@ -17,6 +17,7 @@ import { setClassActive } from "@/utils"
 import { Skeleton } from "@/components/atoms/Skeleton"
 import { Box } from "@/components/atoms/Box"
 import { Fragment } from "react"
+import { motion } from "framer-motion"
 
 const SidebarProfile = () => {
   const { selectedProfile, loading } = useSidebarStore()
@@ -36,25 +37,41 @@ const SidebarProfile = () => {
       }
 
       return (
-        <SidebarMenuItem key={item.label}>
-          <SidebarMenuButton
-            asChild
-            isActive={item.url === currentURL}
-            className="py-6"
-          >
-            <Link href={item.url} className="flex items-center gap-2">
-              <item.icon className="w-4 h-4" />
-              <Typography
-                className={cn(
-                  "transition-all",
-                  setClassActive(currentURL, item.url, "font-bold pl-1")
-                )}
-              >
-                {item.label}
-              </Typography>
-            </Link>
-          </SidebarMenuButton>
-        </SidebarMenuItem>
+        <motion.div
+          initial={{
+            opacity: 0,
+            filter: "blur(2px)",
+          }}
+          animate={{
+            opacity: 1,
+            filter: "blur(0px)",
+          }}
+          transition={{
+            duration: 0.2,
+            ease: "easeOut",
+          }}
+          key={item.label}
+        >
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              asChild
+              isActive={item.url === currentURL}
+              className="py-6"
+            >
+              <Link href={item.url} className="flex items-center gap-2">
+                <item.icon className="w-4 h-4" />
+                <Typography
+                  className={cn(
+                    "transition-all",
+                    setClassActive(currentURL, item.url, "font-bold pl-1")
+                  )}
+                >
+                  {item.label}
+                </Typography>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </motion.div>
       )
     })
   }
@@ -65,9 +82,24 @@ const SidebarProfile = () => {
         {loading ? (
           <Skeleton className="rounded-full w-[70px] h-3" />
         ) : (
-          <Typography as="span" className="text-sm">
-            {PROFILES[profile].title}
-          </Typography>
+          <motion.div
+            initial={{
+              opacity: 0,
+              filter: "blur(2px)",
+            }}
+            animate={{
+              opacity: 1,
+              filter: "blur(0px)",
+            }}
+            transition={{
+              duration: 0.2,
+              ease: "easeOut",
+            }}
+          >
+            <Typography as="span" className="text-sm">
+              {PROFILES[profile].title}
+            </Typography>
+          </motion.div>
         )}
       </SidebarGroupLabel>
       <SidebarGroupContent>
