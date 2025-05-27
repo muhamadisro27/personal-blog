@@ -29,7 +29,7 @@ const Article = ({ articles }: Props) => {
 
     return (
       <>
-        {articles.map((article,index) => (
+        {articles.map((article) => (
           <Link href={article.url} target="_blank" key={article.id}>
             <Card className="cursor-pointer hover:bg-card/70 min-h-[350px] flex flex-col justify-between">
               <CardHeader className="p-4">
