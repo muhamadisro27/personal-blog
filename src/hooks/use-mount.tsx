@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react"
 
-const useMount = () => {
+const useMount = (timer: number = 0) => {
   const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
-    setLoading(false)
-  }, [loading])
+    setTimeout(() => {
+      setLoading(false)
+    }, timer)
+  }, [])
 
   return {
     loading,

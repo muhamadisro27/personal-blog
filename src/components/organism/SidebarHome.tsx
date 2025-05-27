@@ -20,16 +20,18 @@ const SidebarHome = () => {
   const currentURL = usePathname()
   const { loading } = useSidebarStore()
 
+  const setActive = () => {
+    if (!loading && "/" === currentURL) return true
+
+    return false
+  }
+
   return (
     <SidebarGroup>
       <SidebarGroupContent>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton
-              asChild
-              isActive={"/" === currentURL}
-              className="py-6"
-            >
+            <SidebarMenuButton asChild isActive={setActive()} className="py-6">
               {loading ? (
                 <Box className="w-full py-4 px-2">
                   <Skeleton className="w-full h-3.5" />

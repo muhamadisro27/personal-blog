@@ -27,6 +27,7 @@ import { useSidebarStore } from "@/stores/useSidebarStore"
 import { usePathname, useRouter } from "next/navigation"
 import { getSelectedProfileFromCookie } from "@/utils/cookie"
 import { useIsMobile } from "@/hooks/use-mobile"
+import { motion } from "framer-motion"
 
 const SidebarDropdown = () => {
   const selectedProfile = useSidebarStore(
@@ -68,16 +69,31 @@ const SidebarDropdown = () => {
           </Box>
         ) : (
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <SidebarMenuButton className="py-6 focus-visible:ring-0">
-                {createElement(PROFILES[selectedProfile].icon)}
-                {setDefaultValue(
-                  PROFILES[selectedProfile].title,
-                  "Select Personal"
-                )}
-                <ChevronsUpDown className="ml-auto" />
-              </SidebarMenuButton>
-            </DropdownMenuTrigger>
+            <motion.div
+              initial={{
+                opacity: 0,
+                filter: "blur(2px)",
+              }}
+              animate={{
+                opacity: 1,
+                filter: "blur(0px)",
+              }}
+              transition={{
+                duration: 0.2,
+                ease: "easeOut",
+              }}
+            >
+              <DropdownMenuTrigger asChild>
+                <SidebarMenuButton className="py-6 focus-visible:ring-0">
+                  {createElement(PROFILES[selectedProfile].icon)}
+                  {setDefaultValue(
+                    PROFILES[selectedProfile].title,
+                    "Select Personal"
+                  )}
+                  <ChevronsUpDown className="ml-auto" />
+                </SidebarMenuButton>
+              </DropdownMenuTrigger>
+            </motion.div>
             <DropdownMenuContent
               side={isMobile ? "bottom" : "right"}
               className={`${isMobile ? "" : "ml-3 mt-2"}`}
