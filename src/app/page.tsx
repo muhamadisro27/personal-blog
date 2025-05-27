@@ -21,7 +21,8 @@ async function getArticleData(): Promise<IArticleData[]> {
     )
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`)
+      console.error(`HTTP error! status: ${response.status}`)
+      return []
     }
 
     const data = (await response.json()) as IArticleData[]

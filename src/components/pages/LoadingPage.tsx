@@ -1,10 +1,10 @@
 "use client"
 import { Fragment, ReactNode } from "react"
 import Loading from "@/components/molecules/Loading"
-import useMount from "@/hooks/use-mount"
+import { useSidebarStore } from "@/stores/useSidebarStore"
 
 const LoadingPage = ({ children }: { children: ReactNode }) => {
-  const { loading } = useMount(2000)
+  const { loading } = useSidebarStore()
 
   return <>{loading ? <Loading /> : <Fragment>{children}</Fragment>}</>
 }

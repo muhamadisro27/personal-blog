@@ -14,7 +14,9 @@ export const useSidebarStore = create<ISidebarStore>((set) => ({
     setSelectedProfileToCookie(newProfile)
   },
   initializeProfile: async () => {
-    set({ loading: true })
+    set({
+      loading: true,
+    })
     const profile = await getSelectedProfileFromCookie()
     set({
       selectedProfile: profile ?? "personal",
