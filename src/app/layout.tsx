@@ -11,7 +11,8 @@ import LoadingPage from "@/components/pages/LoadingPage"
 import AmbientBackground from "@/components/molecules/AmbientBackground"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import { APP_MODE, CURRENT_APP_MODE } from "@/utils/constant"
+import { APP_MODE } from "@/utils/constant"
+import { useRuntimeConfig } from "@/lib/config"
 
 export const metadata: Metadata = {
   title: "Muhamad Isro Sabanur | Personal Website",
@@ -27,10 +28,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const { appMode } = useRuntimeConfig()
+
   const renderAnalytic = () =>
-    CURRENT_APP_MODE === APP_MODE.production ? <Analytics /> : <></>
+    appMode === APP_MODE.production ? <Analytics /> : <></>
   const renderSpeedInsight = () =>
-    CURRENT_APP_MODE === APP_MODE.production ? <SpeedInsights /> : <></>
+    appMode === APP_MODE.production ? <SpeedInsights /> : <></>
 
   return (
     <html lang="en" suppressHydrationWarning>
