@@ -31,7 +31,7 @@ const Article = ({ articles }: Props) => {
       <>
         {articles.map((article) => (
           <Link href={article.url} target="_blank" key={article.id}>
-            <Card className="cursor-pointer min-h-[350px] flex flex-col justify-between hover:border-primary/50 ">
+            <Card className="cursor-pointer transition-all min-h-[350px] hover:bg-card/60 flex flex-col hover:scale-[1.004] justify-between hover:border-primary/50 ">
               <CardHeader className="p-4">
                 <CardTitle className="pt-2 leading-6 line-clamp-3">
                   {article.title}

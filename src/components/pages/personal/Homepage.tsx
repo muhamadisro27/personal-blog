@@ -21,8 +21,6 @@ const Homepage = ({ articles }: HomePageProps) => {
 
           <News articles={articles} />
 
-          <Divider className="mt-10" />
-
           <Services />
 
           {/* <Divider /> */}
