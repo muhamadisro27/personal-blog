@@ -10,7 +10,6 @@ import {
   Send,
   SquareUserRound,
 } from "lucide-react"
-import { parseBoolean } from "."
 
 export const prefix = "Hi, I'm " as const
 export const suffixes = ["Muhamad Isro", "Frontend Engineer"]

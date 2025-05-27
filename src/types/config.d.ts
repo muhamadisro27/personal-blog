@@ -1,9 +1,8 @@
+import { TPageFlagMap } from "./flags"
+
 export interface IRuntimeConfig {
   appMode: TAppMode
-  pages: {
-    [K in TPageKey]: boolean
-  }
-  features: {}
+  pages: TPageFlagMap
   apiKey: {
     news: string
   }

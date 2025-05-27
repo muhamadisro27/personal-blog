@@ -1,8 +1,8 @@
 import { TPageFlagMap, TPageKey } from "@/types"
 import { APP_MODE } from "@/utils/constant"
-import { useRuntimeConfig } from "./config"
+import { runtimeConfig } from "./config"
 
-const { appMode, pages } = useRuntimeConfig()
+const { appMode, pages } = runtimeConfig()
 
 export const FEATURE_FLAGS: TPageFlagMap = pages
 export const isFeatureEnabled = (key: TPageKey): boolean =>

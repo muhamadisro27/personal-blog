@@ -1,7 +1,7 @@
 import api from "@/lib/axios"
 import { IResponseHooksUseFetch, UseRequestOptions } from "@/types/api"
 import { HTTP_METHOD } from "@/utils/api"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 
 const useFetch = <T>(
   url: string,
@@ -16,7 +16,7 @@ const useFetch = <T>(
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const res = await api.request<T>({
         url,
@@ -25,15 +25,16 @@ const useFetch = <T>(
         ...config,
       })
       setData(res.data)
-    } catch (err: any) {
-      setError(err.response?.data?.error || err.message || "Request failed")
+    } catch (err) {
+      console.error("error", err)
+      setError("Request API failed")
     } finally {
       setLoading(false)
     }
-  }
+  }, [body, config, method, url])
   useEffect(() => {
     if (trigger) fetchData()
-  }, [url, method, trigger])
+  }, [url, method, trigger, fetchData])
 
   return { data, loading, error, refetch: fetchData }
 }

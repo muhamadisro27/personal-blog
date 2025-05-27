@@ -12,7 +12,7 @@ import AmbientBackground from "@/components/molecules/AmbientBackground"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { APP_MODE } from "@/utils/constant"
-import { useRuntimeConfig } from "@/lib/config"
+import { runtimeConfig } from "@/lib/config"
 
 export const metadata: Metadata = {
   title: "Muhamad Isro Sabanur | Personal Website",
@@ -21,6 +21,7 @@ export const metadata: Metadata = {
 
 const geist = Geist({
   subsets: ["latin"],
+  fallback: ["monospace"],
 })
 
 export default function RootLayout({
@@ -28,12 +29,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const { appMode } = useRuntimeConfig()
+  const { appMode } = runtimeConfig()
 
   const renderAnalytic = () =>
     appMode === APP_MODE.production ? <Analytics /> : <></>
   const renderSpeedInsight = () =>
     appMode === APP_MODE.production ? <SpeedInsights /> : <></>
+
+  const renderChildren = () =>
+    appMode === APP_MODE.production ? (
+      <LoadingPage>{children}</LoadingPage>
+    ) : (
+      <>{children}</>
+    )
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -52,9 +60,7 @@ export default function RootLayout({
               <main className="w-full min-h-svh">
                 <AmbientBackground>
                   <Header />
-                  <Container>
-                    <LoadingPage>{children}</LoadingPage>
-                  </Container>
+                  <Container>{renderChildren()}</Container>
                 </AmbientBackground>
               </main>
             </AppInitializer>

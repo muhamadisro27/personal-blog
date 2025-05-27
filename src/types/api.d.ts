@@ -21,3 +21,8 @@ export interface IResponseHooksUseFetch {
   error: string | null
   refetch: () => Promise<void>
 }
+
+export interface INewsResponseApi {
+  status: string
+  sources: INewsData[]
+}

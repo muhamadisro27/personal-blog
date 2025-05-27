@@ -1,9 +1,9 @@
-import { TAppMode, TPageKey } from "@/types"
+import { TAppMode } from "@/types"
 import { IRuntimeConfig } from "@/types/config"
 import { parseBoolean } from "@/utils"
 import { APP_MODE } from "@/utils/constant"
 
-export const useRuntimeConfig = (): IRuntimeConfig => {
+export const runtimeConfig = (): IRuntimeConfig => {
   return {
     appMode:
       (process.env.NEXT_PUBLIC_APP_MODE as TAppMode) ?? APP_MODE.production,
@@ -16,7 +16,6 @@ export const useRuntimeConfig = (): IRuntimeConfig => {
       reksadana: parseBoolean(process.env.NEXT_PUBLIC_FEATURE_REKSADANA),
       gold: parseBoolean(process.env.NEXT_PUBLIC_FEATURE_GOLD),
     },
-    features: {},
     apiKey: {
       news: process.env.SECRET_NEWS_API_KEY!,
     },
