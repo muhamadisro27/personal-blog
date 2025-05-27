@@ -1,5 +1,5 @@
 import { SidebarTrigger } from "@/components/ui/sidebar"
-import Box from "@/components/atoms/Box/Box"
+import { Box } from "@/components/atoms/Box"
 
 const Header = () => {
   return (
