@@ -8,19 +8,19 @@ export const runtimeConfig = (): IRuntimeConfig => {
     appMode:
       (process.env.NEXT_PUBLIC_APP_MODE as TAppMode) ?? APP_MODE.production,
     pages: {
-      home: parseBoolean(process.env.NEXT_PUBLIC_FEATURE_HOMEPAGE),
-      about: parseBoolean(process.env.NEXT_PUBLIC_FEATURE_ABOUT),
-      contact: parseBoolean(process.env.NEXT_PUBLIC_FEATURE_CONTACT),
-      run: parseBoolean(process.env.NEXT_PUBLIC_FEATURE_RUN),
-      books: parseBoolean(process.env.NEXT_PUBLIC_FEATURE_BOOKS),
-      reksadana: parseBoolean(process.env.NEXT_PUBLIC_FEATURE_REKSADANA),
-      gold: parseBoolean(process.env.NEXT_PUBLIC_FEATURE_GOLD),
+      home: parseBoolean(process.env.NEXT_PUBLIC_PAGE_HOMEPAGE),
+      about: parseBoolean(process.env.NEXT_PUBLIC_PAGE_ABOUT),
+      contact: parseBoolean(process.env.NEXT_PUBLIC_PAGE_CONTACT),
+      run: parseBoolean(process.env.NEXT_PUBLIC_PAGE_RUN),
+      books: parseBoolean(process.env.NEXT_PUBLIC_PAGE_BOOKS),
+      reksadana: parseBoolean(process.env.NEXT_PUBLIC_PAGE_REKSADANA),
+      gold: parseBoolean(process.env.NEXT_PUBLIC_PAGE_GOLD),
     },
     apiKey: {
       news: process.env.SECRET_NEWS_API_KEY!,
     },
     baseURL: {
-      news: process.env.NUXT_PUBLIC_NEWS_BASE_URL!,
+      news: process.env.NEXT_PUBLIC_NEWS_BASE_URL!,
     },
   }
 }
