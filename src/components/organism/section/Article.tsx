@@ -41,11 +41,11 @@ const Article = ({ articles }: Props) => {
                 <Box className="relative w-full h-[200px] m-auto">
                   {article.cover_image ? (
                     <Image
+                      key={article.id}
                       src={article.cover_image}
                       alt={article.title}
                       title={article.title}
                       fill
-                      priority
                       className="object-cover rounded-md"
                       sizes="(max-width: 768px) 100vw, 350px"
                       aria-description={article.description}
