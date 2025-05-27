@@ -1,6 +1,6 @@
 "use client"
 import { createElement, useEffect } from "react"
-import Box from "@/components/atoms/Box/Box"
+import { Box } from "@/components/atoms/Box"
 import {
   DropdownMenu,
   DropdownMenuContent,

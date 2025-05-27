@@ -14,7 +14,7 @@ import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { useSidebarStore } from "@/stores/useSidebarStore"
 import { Skeleton } from "@/components/atoms/Skeleton"
-import Box from "@/components/atoms/Box/Box"
+import { Box } from "@/components/atoms/Box"
 
 const SidebarHome = () => {
   const currentURL = usePathname()

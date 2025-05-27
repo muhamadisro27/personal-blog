@@ -15,7 +15,7 @@ import { Typography } from "../atoms/Typography"
 import { cn } from "@/lib/utils"
 import { setClassActive } from "@/utils"
 import { Skeleton } from "@/components/atoms/Skeleton"
-import Box from "@/components/atoms/Box/Box"
+import { Box } from "@/components/atoms/Box"
 import { Fragment } from "react"
 
 const SidebarProfile = () => {

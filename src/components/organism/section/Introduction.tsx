@@ -1,4 +1,4 @@
-import Box from "@/components/atoms/Box/Box"
+import { Box } from "@/components/atoms/Box"
 import { Typography } from "@/components/atoms/Typography"
 import { Typewriter } from "@/components/molecules/Typewriter"
 

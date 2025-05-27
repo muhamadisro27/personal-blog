@@ -1,15 +1,15 @@
-import Box from "@/components/atoms/Box/Box"
+import { Box } from "@/components/atoms/Box"
 import { Divider } from "@/components/atoms/Divider"
 import Introduction from "@/components/organism/section/Introduction"
-import News from "@/components/organism/section/News"
+import News from "@/components/organism/section/Article"
 import Services from "@/components/organism/section/Services"
-import { INewsData } from "@/types/api/news"
+import { IArticleData } from "@/types/api/article"
 
 interface HomePageProps {
-  news: INewsData[]
+  articles: IArticleData[]
 }
 
-const Homepage = ({ news }: HomePageProps) => {
+const Homepage = ({ articles }: HomePageProps) => {
   return (
     <>
       {/* Main Layout Home */}
@@ -19,7 +19,7 @@ const Homepage = ({ news }: HomePageProps) => {
 
           <Divider />
 
-          <News news={news} />
+          <News articles={articles} />
 
           <Divider className="mt-10" />
 

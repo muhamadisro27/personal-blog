@@ -4,9 +4,9 @@ export interface IRuntimeConfig {
   appMode: TAppMode
   pages: TPageFlagMap
   apiKey: {
-    news: string
+    article: string
   }
   baseURL: {
-    news: string
+    article: string
   }
 }

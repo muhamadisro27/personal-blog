@@ -1,19 +1,18 @@
 import MaintenancePage from "@/components/pages/MaintenancePage"
 import Homepage from "@/components/pages/personal/Homepage"
 import { isFeatureEnabled } from "@/lib/flags"
-import { INewsResponseApi } from "@/types/api"
-import { INewsData } from "@/types/api/news"
+import { IArticleData } from "@/types/api/article"
 
-async function getNewsData(): Promise<INewsData[]> {
+async function getArticleData(): Promise<IArticleData[]> {
   try {
     const { runtimeConfig } = await import("@/lib/config")
     const { baseURL, apiKey } = runtimeConfig()
 
     const response = await fetch(
-      `${baseURL.news}/top-headlines/sources?category=technology`,
+      `${baseURL.article}/articles/latest?tag=frontend`,
       {
         headers: {
-          "X-Api-Key": apiKey.news,
+          "api-key": apiKey.article,
         },
         next: {
           revalidate: 86400,
@@ -25,20 +24,20 @@ async function getNewsData(): Promise<INewsData[]> {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
 
-    const data = (await response.json()) as INewsResponseApi
+    const data = (await response.json()) as IArticleData[]
 
-    return data.sources ? data.sources.slice(0, 6) : []
+    return data ? data.slice(0, 6) : []
   } catch (error) {
-    console.error('error', error)
+    console.error("error", error)
     return []
   }
 }
 
 const Page = async () => {
-  const news = await getNewsData()
+  const articles = await getArticleData()
 
   return isFeatureEnabled("home") ? (
-    <Homepage news={news} />
+    <Homepage articles={articles} />
   ) : (
     <MaintenancePage />
   )

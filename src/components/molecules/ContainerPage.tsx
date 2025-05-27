@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react"
-import Box from "@/components/atoms/Box/Box"
+import { Box } from "@/components/atoms/Box"
 
 const ContainerPage = ({ children }: { children: ReactNode }) => {
   return (

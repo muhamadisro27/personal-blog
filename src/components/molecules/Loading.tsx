@@ -1,7 +1,7 @@
 "use client"
 import { motion } from "framer-motion"
 import ContainerPage from "@/components/molecules/ContainerPage"
-import Box from "@/components/atoms/Box/Box"
+import { Box } from "@/components/atoms/Box"
 import { Typography } from "../atoms/Typography"
 
 const Loading = () => {

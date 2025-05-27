@@ -17,10 +17,10 @@ export const runtimeConfig = (): IRuntimeConfig => {
       gold: parseBoolean(process.env.NEXT_PUBLIC_PAGE_GOLD),
     },
     apiKey: {
-      news: process.env.SECRET_NEWS_API_KEY!,
+      article: process.env.SECRET_ARTICLE_API_KEY!,
     },
     baseURL: {
-      news: process.env.NEXT_PUBLIC_NEWS_BASE_URL!,
+      article: process.env.NEXT_PUBLIC_ARTICLE_BASE_URL!,
     },
   }
 }
