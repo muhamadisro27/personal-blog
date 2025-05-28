@@ -5,22 +5,24 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
+  CardFooter,
 } from "@/components/atoms/Card"
 import DefaultImage from "@/components/atoms/Image/DefaultImage"
 import SkeletonArticle from "@/components/atoms/Skeleton/SkeletonArticle"
 import { Typography } from "@/components/atoms/Typography"
-import useMount from "@/hooks/use-mount"
+import { Badge } from "@/components/ui/badge"
+import { CardDescription } from "@/components/ui/card"
+import { useSidebarStore } from "@/stores/useSidebarStore"
 import { IArticleData } from "@/types/api/article"
 import { Newspaper } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-
 interface Props {
   articles: IArticleData[]
 }
 
 const Article = ({ articles }: Props) => {
-  const { loading } = useMount()
+  const { loading } = useSidebarStore()
 
   const renderArticles = () => {
     if (loading) {
@@ -29,35 +31,50 @@ const Article = ({ articles }: Props) => {
 
     return (
       <>
-        {articles.map((article) => (
-          <Link href={article.url} target="_blank" key={article.id}>
-            <Card className="cursor-pointer min-h-[350px] flex flex-col justify-between hover:border-primary/50 ">
-              <CardHeader className="p-4">
-                <CardTitle className="pt-2 leading-6 line-clamp-3">
-                  {article.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <Box className="relative w-full h-[200px] m-auto">
-                  {article.cover_image ? (
-                    <Image
-                      key={article.id}
-                      src={article.cover_image}
-                      alt={article.title}
-                      title={article.title}
-                      fill
-                      className="object-cover rounded-md"
-                      sizes="(max-width: 768px) 100vw, 350px"
-                      aria-description={article.description}
-                    />
-                  ) : (
-                    <DefaultImage text="No image available for this article" />
-                  )}
-                </Box>
-              </CardContent>
-            </Card>
-          </Link>
-        ))}
+        {articles.map((article) => {
+          return (
+            <Link href={`articles${article.path}`} key={article.id}>
+              <Card className="cursor-pointer transition-all min-h-[350px] hover:bg-card/60 flex flex-col hover:scale-[1.004] justify-between hover:border-primary/50 ">
+                <CardHeader className="p-4">
+                  <CardTitle className="pt-2 leading-6 line-clamp-3 min-h-[80px]">
+                    {article.title}
+                  </CardTitle>
+                  <CardDescription>
+                    {`@${ article.user.username}`}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Box className="relative w-full h-[200px] m-auto">
+                    {article.cover_image ? (
+                      <Image
+                        key={article.id}
+                        src={article.cover_image}
+                        alt={article.title}
+                        title={article.title}
+                        fill
+                        className="object-cover rounded-md"
+                        sizes="(max-width: 768px) 100vw, 350px"
+                        aria-description={article.description}
+                      />
+                    ) : (
+                      <DefaultImage text="No image available for this article" />
+                    )}
+                  </Box>
+                </CardContent>
+                <CardFooter className="flex gap-x-2 p-4 gap-y-1.5 pt-0.5 flex-wrap">
+                  {article.tag_list.slice(0, 2).map((tag) => (
+                    <Badge variant="outline" key={tag}>
+                      #{tag}
+                    </Badge>
+                  ))}
+                  <Badge variant="outline">
+                    {article.tag_list.slice(2).length}+
+                  </Badge>
+                </CardFooter>
+              </Card>
+            </Link>
+          )
+        })}
       </>
     )
   }

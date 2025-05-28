@@ -1,8 +1,8 @@
 import GoldPage from "@/components/pages/asset/GoldPage"
 import MaintenancePage from "@/components/pages/MaintenancePage"
-import { isFeatureEnabled } from "@/lib/flags"
+import { isPageEnabled } from "@/lib/flags"
 
 const Page = () =>
-  isFeatureEnabled("gold") ? <GoldPage /> : <MaintenancePage />
+  isPageEnabled("gold") ? <GoldPage /> : <MaintenancePage />
 
 export default Page

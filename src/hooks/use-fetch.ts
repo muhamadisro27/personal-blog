@@ -1,7 +1,7 @@
 import api from "@/lib/axios"
 import { IResponseHooksUseFetch, UseRequestOptions } from "@/types/api"
 import { HTTP_METHOD } from "@/utils/api"
-import { useEffect, useState, useCallback } from "react"
+import { useEffect, useState, useCallback, useMemo } from "react"
 
 const useFetch = <T>(
   url: string,
@@ -13,28 +13,40 @@ const useFetch = <T>(
   }: UseRequestOptions = {}
 ): IResponseHooksUseFetch => {
   const [data, setData] = useState<T | null>(null)
-  const [loading, setLoading] = useState<boolean>(true)
+  const [loading, setLoading] = useState<boolean>(trigger)
   const [error, setError] = useState<string | null>(null)
 
+  const memoizedConfig = useMemo(() => config, [JSON.stringify(config)])
+
+  const memoizedBody = useMemo(() => body, [JSON.stringify(body)])
+
   const fetchData = useCallback(async () => {
+    if (!url) return
+
+    setLoading(true)
     try {
-      const res = await api.request<T>({
+      const res = await api.request({
         url,
         method,
-        data: body,
-        ...config,
+        data: memoizedBody,
+        ...memoizedConfig,
       })
+
       setData(res.data)
+      setError(null)
     } catch (err) {
       console.error("error", err)
       setError("Request API failed")
     } finally {
-      setLoading(false)
+      setTimeout(() => {
+        setLoading(false)
+      }, 1000)
     }
-  }, [body, config, method, url])
+  }, [memoizedBody, memoizedConfig, method, url])
+
   useEffect(() => {
     if (trigger) fetchData()
-  }, [url, method, trigger, fetchData])
+  }, [trigger, fetchData])
 
   return { data, loading, error, refetch: fetchData }
 }

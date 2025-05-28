@@ -19,5 +19,5 @@ export interface IResponseHooksUseFetch {
   data: T | null
   loading: boolean
   error: string | null
-  refetch: () => Promise<void>
+  refetch?: () => Promise<void>
 }

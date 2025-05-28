@@ -4,6 +4,6 @@ import { runtimeConfig } from "./config"
 
 const { appMode, pages } = runtimeConfig()
 
-export const FEATURE_FLAGS: TPageFlagMap = pages
-export const isFeatureEnabled = (key: TPageKey): boolean =>
-  Boolean(FEATURE_FLAGS[key]) || appMode === APP_MODE.development
+export const PAGE_FLAGS: TPageFlagMap = pages
+export const isPageEnabled = (key: TPageKey): boolean =>
+  Boolean(PAGE_FLAGS[key]) || appMode === APP_MODE.development

@@ -55,7 +55,6 @@ const AmbientBackground: React.FC<AmbientBackgroundProps> = ({ children }) => {
               />
             ))}
 
-            <div className="absolute top-10 right-10 w-32 h-32 border border-slate-500/20 rounded-full animate-pulse [animation-duration:10s]" />
             <div className="absolute bottom-10 left-10 w-24 h-24 border border-blue-500/20 rounded-full animate-ping" />
           </>
         )}

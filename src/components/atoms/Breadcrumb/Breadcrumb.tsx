@@ -17,7 +17,7 @@ const Breadcrumb = ({ breadcrumbLinks }: Props) => {
       <BreadcrumbList>
         {breadcrumbLinks.map((breadCrumb, index) => (
           <Fragment key={index}>
-            {index === breadcrumbLinks.length - 1 ? (
+            {index === breadcrumbLinks.length - 1 && breadCrumb.url === "" ? (
               <BreadcrumbPage title={breadCrumb.title} />
             ) : (
               <BreadcrumbLink title={breadCrumb.title} link={breadCrumb.url} />

@@ -1,5 +1,6 @@
 import { SidebarTrigger } from "@/components/ui/sidebar"
 import { Box } from "@/components/atoms/Box"
+import { memo } from "react"
 
 const Header = () => {
   return (
@@ -9,4 +10,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default memo(Header)

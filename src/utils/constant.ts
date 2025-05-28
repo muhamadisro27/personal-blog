@@ -6,6 +6,7 @@ import {
   DollarSign,
   Footprints,
   Leaf,
+  Newspaper,
   PersonStanding,
   Send,
   SquareUserRound,
@@ -50,6 +51,11 @@ export const SIDEBAR_MENUS: TSidebarMenuMap = {
       label: "Contact",
       url: "/contact",
       icon: Send,
+    },
+    {
+      label: "Articles",
+      url: "/articles",
+      icon: Newspaper,
     },
   ],
   asset: [
