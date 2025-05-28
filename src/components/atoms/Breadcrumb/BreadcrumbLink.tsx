@@ -4,6 +4,7 @@ import {
   BreadcrumbLink as BreadcrumbLinksShadCN,
 } from "@/components/ui/breadcrumb"
 import { Slash } from "lucide-react"
+import Link from "next/link"
 import React from "react"
 
 interface Props {
@@ -15,7 +16,9 @@ const BreadcrumbLink = ({ title, link }: Props) => {
   return (
     <>
       <BreadcrumbItem>
-        <BreadcrumbLinksShadCN href={link}>{title}</BreadcrumbLinksShadCN>
+        <BreadcrumbLinksShadCN asChild>
+          <Link href={link}>{title}</Link>
+        </BreadcrumbLinksShadCN>
       </BreadcrumbItem>
       <BreadcrumbSeparator>
         <Slash />

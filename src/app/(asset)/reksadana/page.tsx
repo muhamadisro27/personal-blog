@@ -1,8 +1,8 @@
 import ReksadanaPage from "@/components/pages/asset/ReksadanaPage"
 import MaintenancePage from "@/components/pages/MaintenancePage"
-import { isFeatureEnabled } from "@/lib/flags"
+import { isPageEnabled } from "@/lib/flags"
 
 const Page = () =>
-  isFeatureEnabled("reksadana") ? <ReksadanaPage /> : <MaintenancePage />
+  isPageEnabled("reksadana") ? <ReksadanaPage /> : <MaintenancePage />
 
 export default Page

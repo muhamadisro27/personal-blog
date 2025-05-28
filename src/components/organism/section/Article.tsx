@@ -11,6 +11,7 @@ import DefaultImage from "@/components/atoms/Image/DefaultImage"
 import SkeletonArticle from "@/components/atoms/Skeleton/SkeletonArticle"
 import { Typography } from "@/components/atoms/Typography"
 import { Badge } from "@/components/ui/badge"
+import { CardDescription } from "@/components/ui/card"
 import { useSidebarStore } from "@/stores/useSidebarStore"
 import { IArticleData } from "@/types/api/article"
 import { Newspaper } from "lucide-react"
@@ -32,12 +33,15 @@ const Article = ({ articles }: Props) => {
       <>
         {articles.map((article) => {
           return (
-            <Link href={article.path} key={article.id}>
+            <Link href={`articles${article.path}`} key={article.id}>
               <Card className="cursor-pointer transition-all min-h-[350px] hover:bg-card/60 flex flex-col hover:scale-[1.004] justify-between hover:border-primary/50 ">
                 <CardHeader className="p-4">
                   <CardTitle className="pt-2 leading-6 line-clamp-3 min-h-[80px]">
                     {article.title}
                   </CardTitle>
+                  <CardDescription>
+                    {`@${ article.user.username}`}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Box className="relative w-full h-[200px] m-auto">
@@ -58,11 +62,14 @@ const Article = ({ articles }: Props) => {
                   </Box>
                 </CardContent>
                 <CardFooter className="flex gap-x-2 p-4 gap-y-1.5 pt-0.5 flex-wrap">
-                  {article.tag_list.map((tag) => (
+                  {article.tag_list.slice(0, 2).map((tag) => (
                     <Badge variant="outline" key={tag}>
                       #{tag}
                     </Badge>
                   ))}
+                  <Badge variant="outline">
+                    {article.tag_list.slice(2).length}+
+                  </Badge>
                 </CardFooter>
               </Card>
             </Link>

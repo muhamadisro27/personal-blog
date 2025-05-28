@@ -1,6 +1,6 @@
 import MaintenancePage from "@/components/pages/MaintenancePage"
 import Homepage from "@/components/pages/personal/Homepage"
-import { isFeatureEnabled } from "@/lib/flags"
+import { isPageEnabled } from "@/lib/flags"
 import { IArticleData } from "@/types/api/article"
 
 async function getArticleData(): Promise<IArticleData[]> {
@@ -8,17 +8,14 @@ async function getArticleData(): Promise<IArticleData[]> {
     const { runtimeConfig } = await import("@/lib/config")
     const { baseURL, apiKey } = runtimeConfig()
 
-    const response = await fetch(
-      `${baseURL.article}/articles/latest?tag=frontend`,
-      {
-        headers: {
-          "api-key": apiKey.article,
-        },
-        next: {
-          revalidate: 86400,
-        },
-      }
-    )
+    const response = await fetch(`${baseURL.article}/articles/me/all`, {
+      headers: {
+        "api-key": apiKey.article,
+      },
+      next: {
+        revalidate: 86400,
+      },
+    })
 
     if (!response.ok) {
       console.error(`HTTP error! status: ${response.status}`)
@@ -37,7 +34,7 @@ async function getArticleData(): Promise<IArticleData[]> {
 const Page = async () => {
   const articles = await getArticleData()
 
-  return isFeatureEnabled("home") ? (
+  return isPageEnabled("home") ? (
     <Homepage articles={articles} />
   ) : (
     <MaintenancePage />

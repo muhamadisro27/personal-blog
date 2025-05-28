@@ -11,6 +11,10 @@ export const runtimeConfig = (): IRuntimeConfig => {
       home: parseBoolean(process.env.NEXT_PUBLIC_PAGE_HOMEPAGE),
       about: parseBoolean(process.env.NEXT_PUBLIC_PAGE_ABOUT),
       contact: parseBoolean(process.env.NEXT_PUBLIC_PAGE_CONTACT),
+      article: parseBoolean(process.env.NEXT_PUBLIC_PAGE_ARTICLE),
+      "detail-article": parseBoolean(
+        process.env.NEXT_PUBLIC_PAGE_DETAIL_ARTICLE
+      ),
       run: parseBoolean(process.env.NEXT_PUBLIC_PAGE_RUN),
       books: parseBoolean(process.env.NEXT_PUBLIC_PAGE_BOOKS),
       reksadana: parseBoolean(process.env.NEXT_PUBLIC_PAGE_REKSADANA),

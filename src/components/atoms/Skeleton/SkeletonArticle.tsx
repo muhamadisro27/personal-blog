@@ -6,10 +6,12 @@ import {
 } from "@/components/atoms/Card"
 import { Skeleton } from "@/components/atoms/Skeleton"
 
-const SkeletonNews = () => {
+type Props = { length?: number }
+
+const SkeletonNews = ({ length = 1 }: Props) => {
   return (
     <>
-      {[...Array(6)].map((_, idx) => (
+      {[...Array(length)].map((_, idx) => (
         <Card
           key={idx}
           className="cursor-wait min-h-[350px] flex flex-col justify-between"

@@ -1,4 +1,9 @@
-export type TPagePersonal = "home" | "about" | "contact"
+export type TPagePersonal =
+  | "home"
+  | "about"
+  | "contact"
+  | "article"
+  | "detail-article"
 export type TPageHobbies = "run" | "books"
 export type TPageAsset = "reksadana" | "gold"
 

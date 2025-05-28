@@ -20,10 +20,17 @@ import { motion } from "framer-motion"
 
 const SidebarProfile = () => {
   const { selectedProfile, loading } = useSidebarStore()
-  const currentURL = usePathname()
   const profile = selectedProfile ?? "personal"
+  const currentURL = usePathname()
 
-  const setActive = (url: string) => (url === currentURL ? true : false)
+  const normalizePath = (path: string) =>
+    path.endsWith("/") ? path.slice(0, -1) : path
+
+  const setActive = (url: string) => {
+    const current = normalizePath(currentURL)
+    const target = normalizePath(url)
+    return current === target || current.startsWith(`${target}/`)
+  }
 
   const renderSidebarMenuItem = () => {
     return Object.values(SIDEBAR_MENUS[profile]).map((item, index) => {
@@ -57,7 +64,11 @@ const SidebarProfile = () => {
           key={item.label}
         >
           <SidebarMenuItem>
-            <SidebarMenuButton asChild isActive={setActive(item.url)} className="py-6">
+            <SidebarMenuButton
+              asChild
+              isActive={setActive(item.url)}
+              className="py-6"
+            >
               <Link href={item.url} className="flex items-center gap-2">
                 <item.icon
                   data-active={setActive(item.url)}
