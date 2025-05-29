@@ -1,16 +1,17 @@
-import {
-  BreadcrumbItem,
-  BreadcrumbPage as BreadcrumbPageShadCn,
-} from "@/components/ui/breadcrumb"
+import { BreadcrumbPage as BreadcrumbPageShadCn } from "@/components/ui/breadcrumb"
+import { BreadcrumbItem } from "@/components/atoms/Breadcrumb"
+import { ComponentProps, ReactNode } from "react"
 
-interface Props {
-  title: string
-}
+type Props = {
+  title: string | ReactNode
+} & ComponentProps<typeof BreadcrumbPageShadCn>
 
 const BreadcrumbPage = ({ title }: Props) => {
   return (
     <BreadcrumbItem>
-      <BreadcrumbPageShadCn>{title}</BreadcrumbPageShadCn>
+      <BreadcrumbPageShadCn className="line-clamp-1">
+        {title}
+      </BreadcrumbPageShadCn>
     </BreadcrumbItem>
   )
 }

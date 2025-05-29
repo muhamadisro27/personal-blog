@@ -99,6 +99,31 @@
     animation: spin 10s linear infinite;
   }
 
+  /* div#article-body > .js-code-highlight .plaintext {
+    background: #fff;
+    border: 1px solid beige
+  } */
+
+  #article-body p {
+    padding-top: 10px;
+  }
+
+  #article-body hr {
+    padding-top: 10px;
+  }
+
+  #article-body div {
+    background: #33323260;
+    border-radius: 8px;
+    padding: 20px;
+    border : 2px dashed rgba(121, 114, 114, 0.562);
+  }
+
+
+  #article-body div div {
+    display: none;
+  }
+
   @keyframes spin {
     from {
       transform: rotate(0deg);

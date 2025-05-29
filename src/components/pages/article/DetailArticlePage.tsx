@@ -1,6 +1,6 @@
 "use client"
 import useFetch from "@/hooks/use-fetch"
-import { IArticleDetail } from "@/types/api/article"
+import { IArticleData } from "@/types/api/article"
 import { BASE_URL } from "@/utils/api"
 import { useParams } from "next/navigation"
 import { useMemo } from "react"
@@ -12,6 +12,7 @@ import { Breadcrumb } from "@/components/atoms/Breadcrumb"
 import DetailArticle from "@/components/organism/section/DetailArticle"
 import { motion } from "framer-motion"
 import { IBreadcrumbLink } from "@/types"
+import { Loader } from "@/components/molecules"
 
 const DetailArticlePage = () => {
   const params = useParams()
@@ -21,9 +22,12 @@ const DetailArticlePage = () => {
     return Array.isArray(params.path) ? params.path.join("/") : params.path
   }, [params?.path])
 
-  const { data: article } = useFetch<IArticleDetail>(
-    `${BASE_URL.article}/${url}`
-  )
+  const {
+    data: article,
+    loading,
+    error,
+    refetch,
+  } = useFetch<IArticleData>(`${BASE_URL.article}/${url}`)
 
   const breadcrumbLinks = useMemo(
     (): IBreadcrumbLink[] => [
@@ -33,10 +37,10 @@ const DetailArticlePage = () => {
       },
       {
         title: "Articles",
-        url: "/articles", // Fix typo
+        url: "/articles",
       },
       {
-        title: article?.title || "Loading...",
+        title: article?.title ?? <Loader />,
         url: "",
       },
     ],
@@ -54,18 +58,25 @@ const DetailArticlePage = () => {
 
   return (
     <Box className="flex flex-col gap-y-10">
-      <Box className="flex flex-row justify-between items-center">
-        <Link href={"/"} className="flex gap-x-2">
-          <ArrowLeft />
+      <Box className="flex flex-col items-start md:flex-row gap-y-6 md:gap-y-0 justify-between md:items-center">
+        <Link href={"/"} className="flex items-center gap-x-2">
+          <ArrowLeft className="w-6 h-6" />
           <motion.div {...motionProps}>
-            <Typography as="span">Back</Typography>
+            <Typography as="span" className="text-md">
+              Back
+            </Typography>
           </motion.div>
         </Link>
 
         <Breadcrumb breadcrumbLinks={breadcrumbLinks} />
       </Box>
 
-      <DetailArticle article={article} />
+      <DetailArticle
+        article={article}
+        loading={loading}
+        error={error}
+        refetch={refetch}
+      />
     </Box>
   )
 }

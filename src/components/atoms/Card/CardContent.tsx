@@ -1,10 +1,8 @@
-import { ComponentProps, ReactNode } from "react"
+import { ComponentProps } from "react"
 import { CardContent as CardContentShadCN } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 
-type Props = {
-  children: ReactNode
-} & ComponentProps<typeof CardContentShadCN>
+type Props = {} & ComponentProps<typeof CardContentShadCN>
 
 const CardContent = ({ children, className, ...props }: Props) => {
   return (
