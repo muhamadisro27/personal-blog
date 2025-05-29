@@ -1,5 +1,10 @@
 import { Box } from "@/components/atoms/Box"
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/atoms/Card"
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/atoms/Card"
 import { Typography } from "@/components/atoms/Typography"
 import { SERVICES } from "@/utils/constant"
 import { ShipWheel } from "lucide-react"
@@ -16,7 +21,7 @@ const Services = () => {
         Services
       </Typography>
       <Typography as="p" className="text-base">
-        These are the solutions I can bring to your business
+        These are the solutions I can bring to your business.
       </Typography>
 
       <Box className="mt-5 grid gap-y-4 gap-x-0 sm:grid-cols-3 sm:gap-x-4">

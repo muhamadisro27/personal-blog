@@ -1,7 +1,7 @@
 import { Box } from "@/components/atoms/Box"
 import { Divider } from "@/components/atoms/Divider"
 import Introduction from "@/components/organism/section/Introduction"
-import News from "@/components/organism/section/Article"
+import Articles from "@/components/organism/section/Article"
 import Services from "@/components/organism/section/Services"
 import { IArticleData } from "@/types/api/article"
 
@@ -19,7 +19,7 @@ const Homepage = ({ articles }: HomePageProps) => {
 
           <Divider />
 
-          <News articles={articles} />
+          <Articles articles={articles} />
 
           <Services />
 

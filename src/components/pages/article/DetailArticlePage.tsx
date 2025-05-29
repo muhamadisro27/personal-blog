@@ -19,37 +19,45 @@ const DetailArticlePage = () => {
   const url = useMemo(() => {
     if (!params?.path) return ""
     return Array.isArray(params.path) ? params.path.join("/") : params.path
-  }, [params])
+  }, [params?.path])
 
   const { data: article } = useFetch<IArticleDetail>(
     `${BASE_URL.article}/${url}`
   )
 
-  const breadcrumbLinks: IBreadcrumbLink[] = [
-    {
-      title: "Home",
-      url: "/",
-    },
-    {
-      title: "Articles",
-      url: "/artciles",
-    },
-    {
-      title: article?.title,
-      url: "",
-    },
-  ]
+  const breadcrumbLinks = useMemo(
+    (): IBreadcrumbLink[] => [
+      {
+        title: "Home",
+        url: "/",
+      },
+      {
+        title: "Articles",
+        url: "/articles", // Fix typo
+      },
+      {
+        title: article?.title || "Loading...",
+        url: "",
+      },
+    ],
+    [article?.title]
+  )
+
+  const motionProps = useMemo(
+    () => ({
+      whileHover: {
+        x: 5,
+      },
+    }),
+    []
+  )
 
   return (
     <Box className="flex flex-col gap-y-10">
       <Box className="flex flex-row justify-between items-center">
         <Link href={"/"} className="flex gap-x-2">
           <ArrowLeft />
-          <motion.div
-            whileHover={{
-              x: 5,
-            }}
-          >
+          <motion.div {...motionProps}>
             <Typography as="span">Back</Typography>
           </motion.div>
         </Link>

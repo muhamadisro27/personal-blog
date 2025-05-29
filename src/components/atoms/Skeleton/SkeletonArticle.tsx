@@ -8,7 +8,7 @@ import { Skeleton } from "@/components/atoms/Skeleton"
 
 type Props = { length?: number }
 
-const SkeletonNews = ({ length = 1 }: Props) => {
+const SkeletonArticle = ({ length = 1 }: Props) => {
   return (
     <>
       {[...Array(length)].map((_, idx) => (
@@ -32,4 +32,4 @@ const SkeletonNews = ({ length = 1 }: Props) => {
   )
 }
 
-export default SkeletonNews
+export default SkeletonArticle

@@ -9,26 +9,35 @@ import {
 import { Typography } from "@/components/atoms/Typography"
 import { IArticleDetail } from "@/types/api/article"
 import Link from "next/link"
-import { useEffect } from "react"
 
 type Props = {
-  article: IArticleDetail
+  article: IArticleDetail | undefined
 }
 
 const DetailArticle = ({ article }: Props) => {
-  console.log(article)
 
-  useEffect(() => {}, [])
+  if (!article) {
+    return (
+      <Box className="max-w-[1440px] m-auto">
+        <Card className="h-[calc(100svh-150px)] rounded-lg p-4">
+          <CardHeader>
+            <Typography>Loading article...</Typography>
+          </CardHeader>
+        </Card>
+      </Box>
+    )
+  }
 
   return (
     <Box className="max-w-[1440px] m-auto">
       <Card className="h-[calc(100svh-150px)] rounded-lg p-4">
-        <CardHeader className="flex flex-col gap-y-4">
+        <CardHeader className="flex flex-col p-4 gap-y-4">
           <Box>
             <Box className="flex flex-col gap-y-1">
               <Link
                 target="_blank"
                 href={`https://dev.to/${article?.user?.username}`}
+                className="max-w-max"
               >
                 <Typography as="span" className="text-md">
                   {article?.user?.username}
@@ -46,9 +55,7 @@ const DetailArticle = ({ article }: Props) => {
           </CardTitle>
           <CardDescription>asd</CardDescription>
         </CardHeader>
-        <CardContent>
-          aasdasd
-        </CardContent>
+        <CardContent>aasdasd</CardContent>
       </Card>
     </Box>
   )

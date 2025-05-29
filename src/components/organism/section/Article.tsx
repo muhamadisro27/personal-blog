@@ -26,7 +26,7 @@ const Article = ({ articles }: Props) => {
 
   const renderArticles = () => {
     if (loading) {
-      return <SkeletonArticle />
+      return <SkeletonArticle length={2} />
     }
 
     return (
@@ -40,7 +40,7 @@ const Article = ({ articles }: Props) => {
                     {article.title}
                   </CardTitle>
                   <CardDescription>
-                    {`@${ article.user.username}`}
+                    {`@${article.user.username}`}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -89,7 +89,8 @@ const Article = ({ articles }: Props) => {
         Articles
       </Typography>
       <Typography as="p" className="text-base">
-        These are the latest articles that will keep your updated
+        I&apos;d like to share an article i&apos;ve written, focusing on developments in
+        frontend web technology.
       </Typography>
 
       <Box className="mt-5 grid gap-y-4 gap-x-0 sm:grid-cols-3 sm:gap-x-4">
