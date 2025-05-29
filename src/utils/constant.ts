@@ -48,14 +48,14 @@ export const SIDEBAR_MENUS: TSidebarMenuMap = {
       icon: Leaf,
     },
     {
-      label: "Contact",
-      url: "/contact",
-      icon: Send,
-    },
-    {
       label: "Articles",
       url: "/articles",
       icon: Newspaper,
+    },
+    {
+      label: "Contact",
+      url: "/contact",
+      icon: Send,
     },
   ],
   asset: [

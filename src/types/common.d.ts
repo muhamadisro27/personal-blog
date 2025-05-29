@@ -46,3 +46,5 @@ export type TOnMountedAnimated = {
     | undefined
   exit?: TargetAndTransition | VariantLabels | undefined
 }
+
+export type TRefetchApi = (() => Promise<void>) | undefined

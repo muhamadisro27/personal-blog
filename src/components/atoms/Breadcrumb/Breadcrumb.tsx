@@ -20,7 +20,7 @@ const Breadcrumb = ({ breadcrumbLinks }: Props) => {
             {index === breadcrumbLinks.length - 1 && breadCrumb.url === "" ? (
               <BreadcrumbPage title={breadCrumb.title} />
             ) : (
-              <BreadcrumbLink title={breadCrumb.title} link={breadCrumb.url} />
+              <BreadcrumbLink  title={breadCrumb.title} link={breadCrumb.url} />
             )}
           </Fragment>
         ))}

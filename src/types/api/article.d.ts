@@ -4,18 +4,13 @@ export interface IArticleData {
   description: string
   path: string
   tag_list: string[]
+  tags : string[]
   cover_image: string
   url: string
   user: {
     username: string
+    profile_image : string
   }
-}
-
-export interface IArticleDetail
-  extends Pick<
-    IArticleData,
-    "title" | "description" | "cover_image" | "tag_list" | "user"
-  > {
-  body_html: string
-  readable_publish_date : string
+  body_html? : string
+  readable_publish_date? : string
 }

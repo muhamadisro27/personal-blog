@@ -10,7 +10,7 @@ import {
 import DefaultImage from "@/components/atoms/Image/DefaultImage"
 import SkeletonArticle from "@/components/atoms/Skeleton/SkeletonArticle"
 import { Typography } from "@/components/atoms/Typography"
-import { Badge } from "@/components/ui/badge"
+import { Badge } from "@/components/atoms/Badge"
 import { CardDescription } from "@/components/ui/card"
 import { useSidebarStore } from "@/stores/useSidebarStore"
 import { IArticleData } from "@/types/api/article"
@@ -26,7 +26,7 @@ const Article = ({ articles }: Props) => {
 
   const renderArticles = () => {
     if (loading) {
-      return <SkeletonArticle />
+      return <SkeletonArticle length={2} />
     }
 
     return (
@@ -40,7 +40,7 @@ const Article = ({ articles }: Props) => {
                     {article.title}
                   </CardTitle>
                   <CardDescription>
-                    {`@${ article.user.username}`}
+                    {`@${article.user.username}`}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -64,7 +64,7 @@ const Article = ({ articles }: Props) => {
                 <CardFooter className="flex gap-x-2 p-4 gap-y-1.5 pt-0.5 flex-wrap">
                   {article.tag_list.slice(0, 2).map((tag) => (
                     <Badge variant="outline" key={tag}>
-                      #{tag}
+                      {`#${tag}`}
                     </Badge>
                   ))}
                   <Badge variant="outline">
@@ -89,7 +89,8 @@ const Article = ({ articles }: Props) => {
         Articles
       </Typography>
       <Typography as="p" className="text-base">
-        These are the latest articles that will keep your updated
+        I&apos;d like to share an article i&apos;ve written, focusing on
+        developments in frontend web technology.
       </Typography>
 
       <Box className="mt-5 grid gap-y-4 gap-x-0 sm:grid-cols-3 sm:gap-x-4">

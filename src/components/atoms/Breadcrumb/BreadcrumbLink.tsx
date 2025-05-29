@@ -1,14 +1,14 @@
+import { BreadcrumbLink as BreadcrumbLinksShadCN } from "@/components/ui/breadcrumb"
 import {
   BreadcrumbItem,
   BreadcrumbSeparator,
-  BreadcrumbLink as BreadcrumbLinksShadCN,
-} from "@/components/ui/breadcrumb"
+} from "@/components/atoms/Breadcrumb"
 import { Slash } from "lucide-react"
 import Link from "next/link"
-import React from "react"
+import React, { ReactNode } from "react"
 
 interface Props {
-  title: string
+  title: string | ReactNode
   link: string
 }
 
