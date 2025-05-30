@@ -45,7 +45,7 @@ const TagList = ({ tags }: Props) => {
       const child = children[i]
       const childWidth = child.offsetWidth + 8
 
-      if (totalWidth + childWidth <= containerWidth) {
+      if (totalWidth + childWidth <= containerWidth - 4) {
         totalWidth += childWidth
         visible.push(tags[i])
       } else {

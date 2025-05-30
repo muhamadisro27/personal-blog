@@ -31,7 +31,6 @@ const Article = ({ articles }: Props) => {
     return (
       <>
         {articles.map((article) => {
-          console.log(article)
           return (
             <Link href={`articles${article.path}`} key={article.id}>
               <Card className="cursor-pointer transition-all min-h-[350px] hover:bg-card/60 flex flex-col hover:scale-[1.004] justify-between hover:border-primary/50 ">
@@ -51,7 +50,7 @@ const Article = ({ articles }: Props) => {
                         className="text-xs flex flex-row gap-x-1 items-center"
                       >
                         <MessageCircleMore className="w-5 h-5" />
-                        {article.comments_count} Comment
+                        {article.comments_count} comments
                       </Typography>
                     </Box>
                   </CardTitle>
