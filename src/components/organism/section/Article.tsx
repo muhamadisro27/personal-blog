@@ -10,13 +10,13 @@ import {
 import DefaultImage from "@/components/atoms/Image/DefaultImage"
 import SkeletonArticle from "@/components/atoms/Skeleton/SkeletonArticle"
 import { Typography } from "@/components/atoms/Typography"
-import { Badge } from "@/components/atoms/Badge"
 import { CardDescription } from "@/components/ui/card"
 import { useSidebarStore } from "@/stores/useSidebarStore"
 import { IArticleData } from "@/types/api/article"
 import { Newspaper } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import TagList from "@/components/molecules/TagList"
 interface Props {
   articles: IArticleData[]
 }
@@ -62,14 +62,7 @@ const Article = ({ articles }: Props) => {
                   </Box>
                 </CardContent>
                 <CardFooter className="flex gap-x-2 p-4 gap-y-1.5 pt-0.5 flex-wrap">
-                  {article.tag_list.slice(0, 2).map((tag) => (
-                    <Badge variant="outline" key={tag}>
-                      {`#${tag}`}
-                    </Badge>
-                  ))}
-                  <Badge variant="outline">
-                    {article.tag_list.slice(2).length}+
-                  </Badge>
+                  <TagList tags={article.tag_list} />
                 </CardFooter>
               </Card>
             </Link>
