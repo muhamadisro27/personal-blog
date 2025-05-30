@@ -95,7 +95,7 @@ const SidebarDropdown = () => {
             </motion.div>
             <DropdownMenuContent
               side={isMobile ? "bottom" : "right"}
-              className={`${isMobile ? "" : "ml-3 mt-2"}`}
+              className={`${isMobile ? "" : "ml-4 mt-2"}`}
             >
               {Object.values(PROFILES).map((profile) => {
                 return (

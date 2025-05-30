@@ -83,17 +83,17 @@ const Article = ({ articles }: Props) => {
     <Box className="mt-10 flex flex-col gap-y-2">
       <Typography
         as="h3"
-        className="flex gap-x-3 text-xl font-semibold items-center"
+        className="flex gap-x-3 text-lg md:text-xl font-semibold items-center"
       >
         <Newspaper />
         Articles
       </Typography>
-      <Typography as="p" className="text-base">
+      <Typography as="p" className="text-sm md:text-base">
         I&apos;d like to share an article i&apos;ve written, focusing on
         developments in frontend web technology.
       </Typography>
 
-      <Box className="mt-5 grid gap-y-4 gap-x-0 sm:grid-cols-3 sm:gap-x-4">
+      <Box className="mt-5 grid gap-y-4 gap-x-0 md:grid-cols-2 lg:grid-cols-3 sm:gap-x-4">
         {renderArticles()}
       </Box>
     </Box>
