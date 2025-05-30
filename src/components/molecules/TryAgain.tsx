@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Typography } from "../atoms/Typography"
 import { Button } from "../atoms/Button"
-import { Frown, RefreshCw } from "lucide-react"
+import { Frown, RotateCw } from "lucide-react"
 import { TRefetchApi } from "@/types"
 import { Box } from "@/components/atoms/Box"
 
@@ -29,10 +29,7 @@ const TryAgain = <T extends TRefetchApi>({
   }
   return (
     <>
-      <Typography
-        as="span"
-        className="text-md md:text-md text-center"
-      >
+      <Typography as="span" className="text-md md:text-md text-center">
         {message}
       </Typography>
       <Box>
@@ -40,7 +37,7 @@ const TryAgain = <T extends TRefetchApi>({
       </Box>
       <Button variant="outline" onClick={handleButtonClick}>
         Try Again
-        <RefreshCw
+        <RotateCw
           data-active={animateSpin}
           className="data-[active=true]:animate-spin"
         />

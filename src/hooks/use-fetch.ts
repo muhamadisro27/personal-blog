@@ -2,6 +2,7 @@ import api from "@/lib/axios"
 import { IResponseHooksUseFetch, UseRequestOptions } from "@/types/api"
 import { HTTP_METHOD } from "@/utils/api"
 import { useEffect, useState, useCallback, useMemo } from "react"
+import { useToast } from "@/hooks/use-toast"
 
 const useFetch = <T>(
   url: string,
@@ -12,6 +13,8 @@ const useFetch = <T>(
     ...config
   }: UseRequestOptions = {}
 ): IResponseHooksUseFetch => {
+  const { toast } = useToast()
+
   const [data, setData] = useState<T | null>(null)
   const [loading, setLoading] = useState<boolean>(trigger)
   const [error, setError] = useState<string | null>(null)
@@ -37,6 +40,12 @@ const useFetch = <T>(
     } catch (err) {
       console.error("error", err)
       setError("Request API failed")
+      toast({
+        title: "Uh oh! Something went wrong.",
+        duration : 2000,
+        description: "There was a problem with your request.",
+        variant : 'destructive'
+      })
     } finally {
       setTimeout(() => {
         setLoading(false)

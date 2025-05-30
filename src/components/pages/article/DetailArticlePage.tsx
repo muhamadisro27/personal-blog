@@ -58,7 +58,7 @@ const DetailArticlePage = () => {
 
   return (
     <Box className="flex flex-col gap-y-10">
-      <Box className="flex flex-col items-start md:flex-row gap-y-6 md:gap-y-0 justify-between md:items-center">
+      <Box className="flex flex-col items-start lg:flex-row gap-y-6 lg:gap-y-0 justify-between lg:items-center">
         <Link href={"/"} className="flex items-center gap-x-2">
           <ArrowLeft className="w-6 h-6" />
           <motion.div {...motionProps}>

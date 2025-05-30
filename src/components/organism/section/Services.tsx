@@ -15,16 +15,16 @@ const Services = () => {
     <Box className="mt-10 flex flex-col gap-y-2">
       <Typography
         as="h3"
-        className="flex gap-x-3 text-xl font-semibold items-center"
+        className="flex gap-x-3 text-lg md:text-xl font-semibold items-center"
       >
         <ShipWheel />
         Services
       </Typography>
-      <Typography as="p" className="text-base">
+      <Typography as="p" className="text-sm md:text-base">
         These are the solutions I can bring to your business.
       </Typography>
 
-      <Box className="mt-5 grid gap-y-4 gap-x-0 sm:grid-cols-3 sm:gap-x-4">
+      <Box className="mt-5 grid gap-y-4 gap-x-0 md:grid-cols-2 lg:grid-cols-3 sm:gap-x-4">
         {SERVICES.map((service, idx) => (
           <Card key={idx}>
             <CardHeader className="p-4">

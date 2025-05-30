@@ -99,7 +99,7 @@ const DetailArticle = ({ article, loading, error, refetch }: Props) => {
     <motion.div {...animateDetailArticle}>
       <Box className="w-full m-auto">
         <Card className="min-h-[calc(100svh-150px)] rounded-lg p-0 md:p-4">
-          <CardHeader className="flex flex-col p-4 gap-y-4">
+          <CardHeader className="flex flex-col p-4 gap-y-4 border-b-2 border-dashed pb-8">
             <Box className="flex flex-row max-w-max items-start justify-center gap-x-5">
               <Box className="w-14 h-14 md:w-20 md:h-20 m-auto relative ">
                 {article?.user.profile_image ? (

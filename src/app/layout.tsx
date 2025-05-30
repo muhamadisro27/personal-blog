@@ -14,6 +14,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { APP_MODE } from "@/utils/constant"
 import { runtimeConfig } from "@/lib/config"
 import AnimatePage from "@/components/pages/AnimatePage"
+import PageProgress from "@/components/molecules/PageProgress"
+import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
   title: "Muhamad Isro Sabanur | Personal Website",
@@ -59,12 +61,14 @@ export default function RootLayout({
         >
           <SidebarProvider>
             <AppInitializer>
+              <PageProgress />
               <Sidebar />
               <main className="w-full min-h-svh">
                 <AmbientBackground>
                   <Header />
                   <Container>{renderChildren()}</Container>
                 </AmbientBackground>
+                <Toaster   />
               </main>
             </AppInitializer>
           </SidebarProvider>
