@@ -10,10 +10,9 @@ import {
 import DefaultImage from "@/components/atoms/Image/DefaultImage"
 import SkeletonArticle from "@/components/atoms/Skeleton/SkeletonArticle"
 import { Typography } from "@/components/atoms/Typography"
-import { CardDescription } from "@/components/ui/card"
 import { useSidebarStore } from "@/stores/useSidebarStore"
 import { IArticleData } from "@/types/api/article"
-import { Newspaper } from "lucide-react"
+import { Eye, MessageCircleMore, Newspaper } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import TagList from "@/components/molecules/TagList"
@@ -32,16 +31,30 @@ const Article = ({ articles }: Props) => {
     return (
       <>
         {articles.map((article) => {
+          console.log(article)
           return (
             <Link href={`articles${article.path}`} key={article.id}>
               <Card className="cursor-pointer transition-all min-h-[350px] hover:bg-card/60 flex flex-col hover:scale-[1.004] justify-between hover:border-primary/50 ">
-                <CardHeader className="p-4">
+                <CardHeader className="p-4 pb-0">
                   <CardTitle className="pt-2 leading-6 line-clamp-3 min-h-[80px]">
                     {article.title}
+                    <Box className="flex flex-row pt-3 justify-between">
+                      <Typography
+                        as="span"
+                        className="text-xs flex flex-row gap-x-1 items-center"
+                      >
+                        <Eye className="w-5 h-5" />
+                        {article.page_views_count} views
+                      </Typography>
+                      <Typography
+                        as="span"
+                        className="text-xs flex flex-row gap-x-1 items-center"
+                      >
+                        <MessageCircleMore className="w-5 h-5" />
+                        {article.comments_count} Comment
+                      </Typography>
+                    </Box>
                   </CardTitle>
-                  <CardDescription>
-                    {`@${article.user.username}`}
-                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Box className="relative w-full h-[200px] m-auto">
