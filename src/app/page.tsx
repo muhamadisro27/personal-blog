@@ -8,7 +8,7 @@ async function getArticleData(): Promise<IArticleData[]> {
     const { runtimeConfig } = await import("@/lib/config")
     const { baseURL, apiKey } = runtimeConfig()
 
-    const response = await fetch(`${baseURL.article}/articles/me/all`, {
+    const response = await fetch(`${baseURL.article}/articles/me/published`, {
       headers: {
         "api-key": apiKey.article,
       },
