@@ -56,7 +56,7 @@ const Article = ({ articles }: Props) => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <Box className="relative w-full h-[200px] m-auto">
+                  <Box className="relative w-full h-[200px] m-auto bg-primary/5 border-0 rounded-md">
                     {article.cover_image ? (
                       <Image
                         key={article.id}
@@ -64,7 +64,7 @@ const Article = ({ articles }: Props) => {
                         alt={article.title}
                         title={article.title}
                         fill
-                        className="object-cover rounded-md"
+                        className="object-contain rounded-md"
                         sizes="(max-width: 768px) 100vw, 350px"
                         aria-description={article.description}
                       />
