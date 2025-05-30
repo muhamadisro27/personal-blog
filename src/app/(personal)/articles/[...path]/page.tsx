@@ -4,7 +4,9 @@ import { isPageEnabled } from "@/lib/flags"
 
 const Page = () => {
   return isPageEnabled("detail-article") ? (
-    <DetailArticlePage />
+    <>
+      <DetailArticlePage />
+    </>
   ) : (
     <MaintenancePage />
   )

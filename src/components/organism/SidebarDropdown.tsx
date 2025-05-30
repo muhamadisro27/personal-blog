@@ -12,6 +12,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar"
 import {
   findProfileByCurrentUrl,
@@ -36,14 +37,23 @@ const SidebarDropdown = () => {
   const router = useRouter()
   const currentURL = usePathname()
   const isMobile = useIsMobile()
+  const { setOpenMobile } = useSidebar()
 
   const { setSelectedProfile, loading } = useSidebarStore()
   const handleSelectProfile = (profile: TProfile) => {
     if (profile === selectedProfile) return
 
     setSelectedProfile(profile)
+
     if (currentURL !== "/" && profile === "personal") return router.push("/")
-    if (currentURL !== "/") return router.push(SIDEBAR_MENUS[profile][0].url)
+    if (currentURL !== "/") {
+      if (isMobile) {
+        setOpenMobile(false)
+      }
+
+      router.push(SIDEBAR_MENUS[profile][0].url)
+      return
+    }
   }
 
   useEffect(() => {

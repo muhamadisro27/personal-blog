@@ -6,22 +6,27 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar"
 import { useSidebarStore } from "@/stores/useSidebarStore"
 import { PROFILES, SIDEBAR_MENUS } from "@/utils/constant"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import Link from "next/link"
 import { Typography } from "../atoms/Typography"
 import { cn } from "@/lib/utils"
 import { Skeleton } from "@/components/atoms/Skeleton"
 import { Box } from "@/components/atoms/Box"
-import { Fragment } from "react"
+import { Fragment, MouseEvent } from "react"
 import { motion } from "framer-motion"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 const SidebarProfile = () => {
   const { selectedProfile, loading } = useSidebarStore()
+  const isMobile = useIsMobile()
+  const { setOpenMobile } = useSidebar()
   const profile = selectedProfile ?? "personal"
   const currentURL = usePathname()
+  const router = useRouter()
 
   const normalizePath = (path: string) =>
     path.endsWith("/") ? path.slice(0, -1) : path
@@ -30,6 +35,14 @@ const SidebarProfile = () => {
     const current = normalizePath(currentURL)
     const target = normalizePath(url)
     return current === target || current.startsWith(`${target}/`)
+  }
+
+  const handleClickLink = (e: MouseEvent<HTMLAnchorElement>, url: string) => {
+    e.preventDefault()
+
+    router.push(url)
+
+    if (isMobile) setOpenMobile(false)
   }
 
   const renderSidebarMenuItem = () => {
@@ -56,7 +69,7 @@ const SidebarProfile = () => {
           }}
           transition={{
             duration: 0.8,
-            ease: "ease",
+            ease: "easeInOut",
           }}
           exit={{
             opacity: 0,
@@ -69,7 +82,13 @@ const SidebarProfile = () => {
               isActive={setActive(item.url)}
               className="py-6"
             >
-              <Link href={item.url} className="flex items-center gap-2">
+              <Link
+                onClick={(e: MouseEvent<HTMLAnchorElement>) =>
+                  handleClickLink(e, item.url)
+                }
+                href={item.url}
+                className="flex items-center gap-2"
+              >
                 <item.icon
                   data-active={setActive(item.url)}
                   className="w-4 h-4 data-[active=true]:dark:text-primary/70"
