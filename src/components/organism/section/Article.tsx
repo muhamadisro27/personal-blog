@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
   CardFooter,
+  CardDescription
 } from "@/components/atoms/Card"
 import DefaultImage from "@/components/atoms/Image/DefaultImage"
 import SkeletonArticle from "@/components/atoms/Skeleton/SkeletonArticle"
@@ -16,6 +17,7 @@ import { Eye, MessageCircleMore, Newspaper } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import TagList from "@/components/molecules/TagList"
+
 interface Props {
   articles: IArticleData[]
 }
@@ -37,7 +39,9 @@ const Article = ({ articles }: Props) => {
                 <CardHeader className="p-4 pb-0">
                   <CardTitle className="pt-2 leading-6 line-clamp-3 min-h-[80px]">
                     {article.title}
-                    <Box className="flex flex-row pt-3 justify-between">
+                  </CardTitle>
+                  <CardDescription>
+                    <Box className="flex flex-row pt-3 justify-between items-start">
                       <Typography
                         as="span"
                         className="text-xs flex flex-row gap-x-1 items-center"
@@ -53,7 +57,7 @@ const Article = ({ articles }: Props) => {
                         {article.comments_count} comments
                       </Typography>
                     </Box>
-                  </CardTitle>
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Box className="relative w-full h-[200px] m-auto bg-primary/5 border-0 rounded-md">
