@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
   CardFooter,
+  CardDescription
 } from "@/components/atoms/Card"
 import DefaultImage from "@/components/atoms/Image/DefaultImage"
 import SkeletonArticle from "@/components/atoms/Skeleton/SkeletonArticle"
@@ -16,6 +17,7 @@ import { Eye, MessageCircleMore, Newspaper } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import TagList from "@/components/molecules/TagList"
+
 interface Props {
   articles: IArticleData[]
 }
@@ -31,14 +33,15 @@ const Article = ({ articles }: Props) => {
     return (
       <>
         {articles.map((article) => {
-          console.log(article)
           return (
             <Link href={`articles${article.path}`} key={article.id}>
               <Card className="cursor-pointer transition-all min-h-[350px] hover:bg-card/60 flex flex-col hover:scale-[1.004] justify-between hover:border-primary/50 ">
                 <CardHeader className="p-4 pb-0">
                   <CardTitle className="pt-2 leading-6 line-clamp-3 min-h-[80px]">
                     {article.title}
-                    <Box className="flex flex-row pt-3 justify-between">
+                  </CardTitle>
+                  <CardDescription>
+                    <Box className="flex flex-row pt-3 justify-between items-start">
                       <Typography
                         as="span"
                         className="text-xs flex flex-row gap-x-1 items-center"
@@ -51,13 +54,13 @@ const Article = ({ articles }: Props) => {
                         className="text-xs flex flex-row gap-x-1 items-center"
                       >
                         <MessageCircleMore className="w-5 h-5" />
-                        {article.comments_count} Comment
+                        {article.comments_count} comments
                       </Typography>
                     </Box>
-                  </CardTitle>
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Box className="relative w-full h-[200px] m-auto">
+                  <Box className="relative w-full h-[200px] m-auto bg-primary/5 border-0 rounded-md">
                     {article.cover_image ? (
                       <Image
                         key={article.id}
@@ -65,7 +68,7 @@ const Article = ({ articles }: Props) => {
                         alt={article.title}
                         title={article.title}
                         fill
-                        className="object-cover rounded-md"
+                        className="object-contain rounded-md"
                         sizes="(max-width: 768px) 100vw, 350px"
                         aria-description={article.description}
                       />
