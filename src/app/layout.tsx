@@ -8,12 +8,10 @@ import { Container } from "@/components/atoms/Container"
 import { Geist } from "next/font/google"
 import AppInitializer from "@/components/molecules/AppInitializer"
 import LoadingPage from "@/components/pages/LoadingPage"
-import AmbientBackground from "@/components/molecules/AmbientBackground"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { APP_MODE } from "@/utils/constant"
 import { runtimeConfig } from "@/lib/config"
-import AnimatePage from "@/components/pages/AnimatePage"
 import PageProgress from "@/components/molecules/PageProgress"
 import { Toaster } from "@/components/ui/toaster"
 
@@ -41,11 +39,9 @@ export default function RootLayout({
 
   const renderChildren = () =>
     appMode === APP_MODE.production ? (
-      <LoadingPage>
-        <AnimatePage>{children}</AnimatePage>
-      </LoadingPage>
+      <LoadingPage>{children}</LoadingPage>
     ) : (
-      <AnimatePage>{children}</AnimatePage>
+      <>{children}</>
     )
 
   return (
@@ -64,11 +60,19 @@ export default function RootLayout({
               <PageProgress />
               <Sidebar />
               <main className="w-full min-h-svh">
-                <AmbientBackground>
-                  <Header />
-                  <Container>{renderChildren()}</Container>
-                </AmbientBackground>
-                <Toaster   />
+                <div className="relative min-h-screen bg-gray-450 overflow-hidden">
+                  <div className="absolute w-72 h-72 bg-purple-600/10 rounded-full top-20 left-10 blur-3xl animate-pulse"></div>
+
+                  <div className="absolute w-96 h-96 bg-pink-600/10 rounded-full bottom-20 right-20 blur-3xl animate-pulse"></div>
+
+                  <div className="relative z-10">
+                    <Header />
+                    <Container>{renderChildren()}</Container>
+                  </div>
+                </div>
+                {/* <AmbientBackground> */}
+                {/* </AmbientBackground> */}
+                <Toaster />
               </main>
             </AppInitializer>
           </SidebarProvider>
