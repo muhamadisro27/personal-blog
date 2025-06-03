@@ -5,7 +5,7 @@ import { Sidebar, SidebarContent, SidebarHeader } from "@/components/ui/sidebar"
 
 const AppSidebar = () => {
   return (
-    <Sidebar variant="inset" collapsible="icon" className="border-[#404040] bg-sidebar/20 backdrop-blur-lg">
+    <Sidebar variant="inset" collapsible="icon" className="border-[#404040] bg-sidebar backdrop-blur-lg">
       <SidebarHeader>
         {/* Profiles */}
         <SidebarDropdown />

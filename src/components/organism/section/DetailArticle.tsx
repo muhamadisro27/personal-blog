@@ -96,7 +96,7 @@ const DetailArticle = ({ article, loading, error, refetch }: Props) => {
   }
 
   return (
-    <motion.div {...animateDetailArticle}>
+    <motion.section {...animateDetailArticle}>
       <Box className="w-full m-auto">
         <Card className="min-h-[calc(100svh-150px)] rounded-lg p-0 md:p-4">
           <CardHeader className="flex flex-col p-4 gap-y-4 border-b-2 border-dashed pb-8">
@@ -160,7 +160,7 @@ const DetailArticle = ({ article, loading, error, refetch }: Props) => {
           </CardContent>
         </Card>
       </Box>
-    </motion.div>
+    </motion.section>
   )
 }
 

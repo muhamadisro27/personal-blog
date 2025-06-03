@@ -12,7 +12,7 @@ import Image from "next/image"
 
 const Services = () => {
   return (
-    <Box className="mt-10 flex flex-col gap-y-2">
+    <Box as="section" className="mt-10 flex flex-col gap-y-2">
       <Typography
         as="h3"
         className="flex gap-x-3 text-lg md:text-xl font-semibold items-center"

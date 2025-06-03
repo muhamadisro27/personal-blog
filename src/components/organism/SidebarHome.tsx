@@ -43,7 +43,7 @@ const SidebarHome = () => {
       <SidebarGroupContent>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild isActive={setActive()} className="py-6">
+            <SidebarMenuButton asChild isActive={setActive()} className="py-6 data-[active=true]:bg-accent">
               {loading ? (
                 <Box className="w-full py-4 px-2">
                   <Skeleton className="w-full h-3.5" />
@@ -58,13 +58,13 @@ const SidebarHome = () => {
                 >
                   <Home
                     data-active={setActive()}
-                    className="w-4 h-4 data-[active=true]:dark:text-primary/70"
+                    className="w-4 h-4 data-[active=true]:dark:text-primary"
                   />
                   <Typography
                     as="span"
                     data-active={setActive()}
                     className={
-                      "transition-all pl-0 data-[active=true]:font-bold data-[active=true]:pl-1 data-[active=true]:dark:text-primary/70"
+                      "transition-all pl-0 data-[active=true]:font-bold data-[active=true]:pl-1 data-[active=true]:dark:text-primary"
                     }
                   >
                     Home

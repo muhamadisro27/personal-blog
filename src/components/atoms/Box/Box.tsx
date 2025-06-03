@@ -1,11 +1,18 @@
-import React, { ComponentProps, ReactNode } from "react"
+import React, { ComponentProps, ElementType, ReactNode } from "react"
 
-type Props = {
+type Props<T extends ElementType> = {
   children?: ReactNode
+  as?: T
 } & ComponentProps<"div">
 
-const Box = ({ children, ...props }: Props) => {
-  return <div {...props}>{children}</div>
+const Box = <T extends ElementType = "div">({
+  children,
+  as,
+  ...props
+}: Props<T>) => {
+  const Component = as || "div"
+
+  return <Component {...props}>{children}</Component>
 }
 
 export default Box

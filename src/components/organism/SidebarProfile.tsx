@@ -80,7 +80,7 @@ const SidebarProfile = () => {
             <SidebarMenuButton
               asChild
               isActive={setActive(item.url)}
-              className="py-6"
+              className="py-6 data-[active=true]:bg-accent"
             >
               <Link
                 onClick={(e: MouseEvent<HTMLAnchorElement>) =>
@@ -91,12 +91,12 @@ const SidebarProfile = () => {
               >
                 <item.icon
                   data-active={setActive(item.url)}
-                  className="w-4 h-4 data-[active=true]:dark:text-primary/70"
+                  className="w-4 h-4 data-[active=true]:dark:text-primary"
                 />
                 <Typography
                   data-active={setActive(item.url)}
                   className={cn(
-                    "transition-all pl-0 data-[active=true]:font-bold data-[active=true]:pl-1 data-[active=true]:dark:text-primary/70"
+                    "transition-all pl-0 data-[active=true]:font-bold data-[active=true]:pl-1 data-[active=true]:dark:text-primary"
                   )}
                 >
                   {item.label}

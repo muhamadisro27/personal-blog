@@ -1,4 +1,4 @@
-import { TAppModeMap, TProfileMap, TSidebarMenuMap } from "@/types"
+import { ICareerData, TAppModeMap, TProfileMap, TSidebarMenuMap } from "@/types"
 import {
   BookOpenCheck,
   ChartLine,
@@ -110,3 +110,42 @@ export const SERVICES = [
     image: "dashboard.jpg",
   },
 ] as const
+
+export const CAREERS: ICareerData[] = [
+  {
+    job_title: "Frontend Engineer",
+    company: {
+      name: "Akar Inti Data",
+      image: "akar-inti-data.jpeg",
+      location: "Jakarta Selatan",
+    },
+    period: "7 Month",
+    start_date: "Nov 2024",
+    end_date: null,
+  },
+  {
+    job_title: "Web Engineer",
+    company: {
+      name: "Transcosmos Indonesia",
+      image: "tcid.jpeg",
+      location: "Jakarta Selatan",
+    },
+    period: "2 Year 5 Month",
+    start_date: "June 2022",
+    end_date: "Oct 2024",
+  },
+  {
+    job_title: "Fullstack Developer",
+    company: {
+      name: "Saka Access Fix",
+      image: "saffix.jpeg",
+      location: "Balikpapan",
+    },
+    period: "8 Month",
+    start_date: "Nov 2021",
+    end_date: "June 2022",
+  },
+]
+
+export const RESUME_URL =
+  "https://res.cloudinary.com/duaqvciju/image/upload/v1748951720/Muhamad_Isro_Sabanur_-_Frontend_-_CV_-_2025_page-0001_yvxwpj.jpg" as const
