@@ -4,7 +4,7 @@ import { Typewriter } from "@/components/molecules/Typewriter"
 
 const Introduction = () => {
   return (
-    <Box>
+    <Box as="section">
       <Typewriter />
 
       <Box className="mt-4">
