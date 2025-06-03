@@ -23,7 +23,7 @@ const CareerPath = () => {
               key={career.company.name}
               className="transition-all border-0 duration-500 cursor-pointer bg-gradient-to-br dark:from-neutral-900 dark:to-neutral-950 hover:scale-95 border-r border-t border-b min-h-[150px] flex flex-col justify-between"
             >
-              <CardHeader className="p-0 h-full flex flex-row justify-start items-center overflow-hidden space-x-8">
+              <CardHeader className="p-0 h-full flex flex-row justify-start items-center overflow-hidden space-x-3 lg:space-x-8">
                 <Box className="relative my-2 h-max">
                   <Box className="relative inverted-image border border-l-0 border-[#404040] rounded-r-full bg-background w-[100px] h-[110px]">
                     <Box className="absolute left-1/2 -translate-x-[50%] -translate-y-[50%] top-1/2 w-14 transition-all duration-500 h-14 bg-primary/5 border-0 rounded-full">
@@ -44,7 +44,7 @@ const CareerPath = () => {
                   <Typography as="span" className="dark:text-neutral-200">
                     {career.job_title}
                   </Typography>
-                  <Box className="space-x-2">
+                  <Box className="space-x-2 line-clamp-1">
                     <Typography
                       className="text-sm pt-2 dark:text-neutral-400"
                       as="span"
