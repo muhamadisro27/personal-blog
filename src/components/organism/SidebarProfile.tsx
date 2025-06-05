@@ -79,6 +79,7 @@ const SidebarProfile = () => {
           <SidebarMenuItem>
             <SidebarMenuButton
               asChild
+              tooltip={item.label}
               isActive={setActive(item.url)}
               className="py-6 data-[active=true]:bg-accent"
             >

@@ -4,6 +4,7 @@ import AboutMe from "@/components/organism/section/AboutMe"
 import { motion } from "framer-motion"
 import { onMountedAnimated } from "@/lib/motion"
 import CareerPath from "@/components/organism/section/CareerPath"
+import Skill from "@/components/organism/section/Skill"
 
 const AboutPage = () => {
   return (
@@ -13,7 +14,7 @@ const AboutPage = () => {
 
         <CareerPath />
 
-        {/* <Skill /> */}
+        <Skill />
       </motion.div>
     </LayoutBase>
   )

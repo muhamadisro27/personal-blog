@@ -1,9 +1,15 @@
 import { Box } from "@/components/atoms/Box"
 import { Typography } from "@/components/atoms/Typography"
+import SkillBadge from "@/components/molecules/SkillBadge"
+import { skills } from "@/utils/constant"
 import { CodeXml } from "lucide-react"
-import React from "react"
+// import {} from "geist/"
 
 const Skill = () => {
+  const renderSkills = () => {
+    return skills.map((skill) => <SkillBadge key={skill.title} skill={skill} />)
+  }
+
   return (
     <Box as="section" className="mt-10 flex flex-col space-y-4">
       <Typography
@@ -17,8 +23,8 @@ const Skill = () => {
         My coding skills
       </Typography>
 
-      <Box className="mt-5 grid gap-y-4 gap-x-0 md:grid-cols-2 lg:grid-cols-3 sm:gap-x-4">
-        {/* {renderArticles()} */}
+      <Box className="py-6 grid gap-y-4 gap-x-0 space-y-2 grid-cols-2 md:grid-cols-4 sm:gap-x-4">
+        {renderSkills()}
       </Box>
     </Box>
   )

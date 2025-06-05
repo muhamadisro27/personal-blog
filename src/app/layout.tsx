@@ -14,6 +14,7 @@ import { APP_MODE } from "@/utils/constant"
 import { runtimeConfig } from "@/lib/config"
 import PageProgress from "@/components/molecules/PageProgress"
 import { Toaster } from "@/components/ui/toaster"
+import { AmbientBackground } from "@/components/molecules"
 
 export const metadata: Metadata = {
   title: "Muhamad Isro Sabanur | Personal Website",
@@ -60,18 +61,10 @@ export default function RootLayout({
               <PageProgress />
               <Sidebar />
               <main className="w-full min-h-svh">
-                <div className="relative min-h-screen bg-gray-450 overflow-hidden">
-                  <div className="absolute w-72 h-72 bg-purple-600/10 rounded-full top-20 left-10 blur-3xl animate-pulse"></div>
-
-                  <div className="absolute w-96 h-96 bg-pink-600/10 rounded-full bottom-20 right-20 blur-3xl animate-pulse"></div>
-
-                  <div className="relative z-10">
-                    <Header />
-                    <Container>{renderChildren()}</Container>
-                  </div>
-                </div>
-                {/* <AmbientBackground> */}
-                {/* </AmbientBackground> */}
+                <AmbientBackground>
+                  <Header />
+                  <Container>{renderChildren()}</Container>
+                </AmbientBackground>
                 <Toaster />
               </main>
             </AppInitializer>

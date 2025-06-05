@@ -62,7 +62,7 @@ const DetailArticlePage = () => {
         <Link href={"/"} className="flex items-center gap-x-2">
           <ArrowLeft className="w-6 h-6" />
           <motion.div {...motionProps}>
-            <Typography as="span" className="text-md">
+            <Typography as="span" className="text-base">
               Back
             </Typography>
           </motion.div>

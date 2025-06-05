@@ -43,7 +43,12 @@ const SidebarHome = () => {
       <SidebarGroupContent>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild isActive={setActive()} className="py-6 data-[active=true]:bg-accent">
+            <SidebarMenuButton
+              tooltip="Home"
+              asChild
+              isActive={setActive()}
+              className="py-6 data-[active=true]:bg-accent"
+            >
               {loading ? (
                 <Box className="w-full py-4 px-2">
                   <Skeleton className="w-full h-3.5" />

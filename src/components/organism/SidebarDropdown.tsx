@@ -110,9 +110,13 @@ const SidebarDropdown = () => {
               {Object.values(PROFILES).map((profile) => {
                 return (
                   <DropdownMenuItem
+                    data-active={setClassActive<TProfile>(
+                      selectedProfile,
+                      profile.value
+                    )}
                     onClick={() => handleSelectProfile(profile.value)}
                     key={profile.title}
-                    className="py-4 cursor-pointer"
+                    className="py-4 cursor-pointer data-[active=true]:bg-accent"
                   >
                     <profile.icon
                       data-active={setClassActive<TProfile>(

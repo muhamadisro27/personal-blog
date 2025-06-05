@@ -10,7 +10,7 @@ const AboutMe = () => {
         <Typography as="h3" className="text-2xl font-medium">
           About
         </Typography>
-        <Typography as="span" className="dark:text-neutral-400 text-md">
+        <Typography as="span" className="dark:text-neutral-400 text-base">
           Let&apos;s Get Personal
         </Typography>
       </Box>

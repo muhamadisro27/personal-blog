@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from "react"
 import { Typography } from "../atoms/Typography"
 import { Button } from "../atoms/Button"
@@ -29,7 +30,7 @@ const TryAgain = <T extends TRefetchApi>({
   }
   return (
     <>
-      <Typography as="span" className="text-md md:text-md text-center">
+      <Typography as="span" className="text-base md:text-base text-center">
         {message}
       </Typography>
       <Box>
