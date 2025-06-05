@@ -48,7 +48,7 @@ const Services = () => {
               <CardDescription>
                 <Typography
                   as="p"
-                  className="font-normal dark:text-[#A8A29E] text-md"
+                  className="font-normal dark:text-[#A8A29E] text-base"
                 >
                   {service.description}
                 </Typography>

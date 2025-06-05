@@ -1,4 +1,11 @@
-import { ICareerData, TAppModeMap, TProfileMap, TSidebarMenuMap } from "@/types"
+import { Next, React, Node, Typescript, Javascript, Vue, Nuxt, Git, Github, Docker } from "@/components/atoms/Icon"
+import {
+  ICareerData,
+  ISkillData,
+  TAppModeMap,
+  TProfileMap,
+  TSidebarMenuMap,
+} from "@/types"
 import {
   BookOpenCheck,
   ChartLine,
@@ -149,3 +156,46 @@ export const CAREERS: ICareerData[] = [
 
 export const RESUME_URL =
   "https://res.cloudinary.com/duaqvciju/image/upload/v1748951720/Muhamad_Isro_Sabanur_-_Frontend_-_CV_-_2025_page-0001_yvxwpj.jpg" as const
+
+export const skills: ISkillData[] = [
+  {
+    title: "Node.js",
+    image: Node,
+  },
+  {
+    title: "Typescript",
+    image: Typescript,
+  },
+  {
+    title: "Javascript",
+    image: Javascript,
+  },
+  {
+    title: "React",
+    image: React,
+  },
+  {
+    title: "Next",
+    image: Next,
+  },
+  {
+    title: "Vue",
+    image: Vue,
+  },
+  {
+    title: "Nuxt",
+    image: Nuxt,
+  },
+  {
+    title: "Git",
+    image: Git,
+  },
+  {
+    title: "Git Hub",
+    image: Github,
+  },
+  {
+    title: "Docker",
+    image: Docker,
+  },
+]
