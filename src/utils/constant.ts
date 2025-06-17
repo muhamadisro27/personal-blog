@@ -1,4 +1,16 @@
-import { Next, React, Node, Typescript, Javascript, Vue, Nuxt, Git, Github, Docker } from "@/components/atoms/Icon"
+import {
+  Next,
+  React,
+  Node,
+  Typescript,
+  Javascript,
+  Vue,
+  Nuxt,
+  Git,
+  Github,
+  Docker,
+} from "@/components/atoms/Icon"
+import Linkedin from "@/components/atoms/Icon/Linkedin"
 import {
   ICareerData,
   ISkillData,
@@ -199,3 +211,23 @@ export const skills: ISkillData[] = [
     image: Docker,
   },
 ]
+
+export const CONTACTS = [
+  {
+    name: "GitHub",
+    title: "Explore the code",
+    description: "Explore the source code for all my projects on GitHub.",
+    link: "#",
+    icon: Github,
+    color: "slate",
+  },
+  {
+    name: "Linkedin",
+    title: "Let`s connect",
+    description:
+      "Connect for collaboration or explore my professional experience.",
+    link: "#",
+    icon: Linkedin,
+    color: "blue",
+  },
+] as const
