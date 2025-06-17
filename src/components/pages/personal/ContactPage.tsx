@@ -13,6 +13,7 @@ import {
 } from "@/components/atoms/Card"
 import Link from "next/link"
 import { ExternalLink } from "lucide-react"
+import { CONTACTS } from "@/utils/constant"
 
 const ContactPage = () => {
   return (
@@ -36,26 +37,35 @@ const ContactPage = () => {
             Find me on
           </Typography>
 
-          <Box className="mt-5 grid gap-y-4 gap-x-0 md:grid-cols-2 sm:gap-x-4">
-            {[...Array(4)].map((_, index) => (
+          <Box className="mt-5 grid gap-y-4 gap-x-0 grid-cols-1 lg:grid-cols-2 sm:gap-x-4">
+            {CONTACTS.map((contact, index) => (
               <Card
                 key={index}
-                className="border-slate-500 from-slate-800 to-slate-900 bg-gradient-to-br w-full h-max"
+                className={`w-full flex flex-row justify-between items-center shadow-none rounded-lg border h-max bg-opacity-40 text-${contact.color}-600 dark:text-${contact.color}-400 border-${contact.color}-300 dark:border-${contact.color}-600 dark:from-${contact.color}-900 dark:to-${contact.color}-950 from-${contact.color}-100 to-${contact.color}-200 bg-gradient-to-br`}
               >
-                <CardHeader className="p-6 pb-0">Let&apos;s connect</CardHeader>
-                <CardContent className="p-6 text-sm max-w-44">
-                  Explore the source code for all my projects on GitHub.
-                </CardContent>
-                <CardFooter>
-                  <Link
-                    href="#"
-                    target="_blank"
-                    className="rounded-sm inline-flex justify-center items-center text-black font-medium bg-primary p-2 text-sm bg-slate-400 transition-all duration-150 dark:hover:bg-slate-300"
-                  >
-                    Go to GitHub
-                    <ExternalLink className="w-4 h-4 ml-1" />
-                  </Link>
-                </CardFooter>
+                <Box>
+                  <CardHeader className="p-6 pb-0 text-xl font-medium">
+                    {contact.title}
+                  </CardHeader>
+                  <CardContent className="p-6 pt-4 leading-6 text-xs max-w-[250px]">
+                    {contact.description}
+                  </CardContent>
+                  <CardFooter>
+                    <Link
+                      href={contact.link}
+                      target="_blank"
+                      className={`rounded-sm inline-flex justify-center items-center text-black font-medium bg-primary p-2 text-sm bg-${contact.color}-400 transition-all duration-150 dark:hover:bg-${contact.color}-300`}
+                    >
+                      Go to {contact.name}
+                      <ExternalLink className="w-4 h-4 ml-1" />
+                    </Link>
+                  </CardFooter>
+                </Box>
+                <Box
+                  className={`bg-${contact.color}-800 dark:bg-${contact.color}-500 rounded-full p-4 mr-6`}
+                >
+                  <contact.icon className="w-10 h-10 text-white" />
+                </Box>
               </Card>
             ))}
           </Box>
