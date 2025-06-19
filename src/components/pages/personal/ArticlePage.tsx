@@ -78,7 +78,7 @@ const ArticlePage = ({ articles }: ArticlePageProps) => {
               Related Articles
             </Typography>
 
-            <Box className="grid grid-cols-2 gap-x-8 pt-5">
+            <Box className="grid grid-cols-1 gap-y-10 md:grid-cols-2 gap-x-8 pt-5">
               {articles.slice(1).map((article) => (
                 <Link
                   href={`articles${article.path}`}
