@@ -217,7 +217,7 @@ export const CONTACTS = [
     name: "GitHub",
     title: "Explore the code",
     description: "Explore the source code for all my projects on GitHub.",
-    link: "#",
+    link: "https://github.com/muhamadisro27",
     icon: Github,
     color: "slate",
   },
@@ -226,7 +226,7 @@ export const CONTACTS = [
     title: "Let`s connect",
     description:
       "Connect for collaboration or explore my professional experience.",
-    link: "#",
+    link: "https://www.linkedin.com/in/muhamadisro27/",
     icon: Linkedin,
     color: "blue",
   },
